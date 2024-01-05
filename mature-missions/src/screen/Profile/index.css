@@ -1,0 +1,133 @@
+/*
+    File: index.css
+    Description: Styles for the profile page components.
+*/
+
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+.profile-component {
+    background-color: #FAFAFB;
+    min-height: 100vh;
+}
+
+.profile-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-pic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-left: 2vw;
+}
+
+.profile-summary {
+    margin-top: 7vh;
+    margin-left: 1vw;
+    width: 100vw;
+}
+
+.profile-pic span {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-left: 45px;
+    font-weight: var(--font-semi-bold);
+}
+
+.profile-pic a {
+    display: flex;
+    flex-direction: row;
+    font-weight: var(--font-semi-bold);
+    cursor: pointer;
+}
+
+.profile-header-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-name {
+    font-weight: var(--font-semi-bold);
+    font-size: 26px;
+}
+
+.profile-age {
+    font-size: 20px;
+}
+
+.profile-address {
+    font-size: 18px;
+}
+
+.profile-address img {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+#camera {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+#profile-img {
+    width: 200px;
+    height: 200px;
+}
+
+.profile-header {
+    display: flex;
+    width: 75vw;
+    height: 35vh;
+    background-color: white;
+    margin-top: 0.5vh;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.profile-body {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 75vw;
+    margin-top: 2vh;
+}
+
+.profile-items {
+    width: 19vw;
+    height: fit-content;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+
+}
+
+.profile-item {
+    font-size: 20px;
+    border: 1px solid #ECECED;
+    font-weight: var(--font-semi-bold);
+    padding: 1.5vh 0;
+    padding-left: 1.5vw;
+}
+
+.profile-item.active {
+    background-color: #ECECED;
+    color: black;
+    border: 1px solid #ECECED;
+}
+
+.profile-item-value {
+    width: 55vw;
+    background-color: white;
+    margin-bottom: 50vh;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+}

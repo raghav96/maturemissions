@@ -1,0 +1,65 @@
+/* 
+    File: index.css
+    Description: Styles for the request component.
+*/
+
+/* Root variables for font styles */
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+    --extra-bold: 800;
+}
+
+/* Styles for the .request class */
+.request {
+    background-color: #DBEEFB;
+    padding: 20px;
+    border-top: 3px solid black;
+    border-left: 3px solid black;
+    text-align: center;
+    width: 350px;
+    height: 350px;
+}
+
+/* Styles for specific instances of .request class */
+.request:nth-last-child(-n+3) {
+    border-bottom: 3px solid black;
+}
+
+.request:last-child {
+    border-right: 3px solid black;
+}
+
+.request:nth-child(3) {
+    border-right: 3px solid black;
+}
+
+/* Styles for .request-name class */
+.request-name {
+    font-size: 30px;
+    font-weight: var(--font-bold);
+    height: 60px;
+}
+
+/* Styles for .request-summary class */
+.request-summary {
+    font-size: 18px;
+    font-weight: var(--font-bold);
+    height: 120px;
+}
+
+/* Styles for buttons inside .request class */
+.request button {
+    width: 280px;
+    height: 84px;
+    background-color: #111B47;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 28px;
+    font-weight: var(--font-bold);
+    text-align: center;
+}

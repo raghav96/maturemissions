@@ -1,0 +1,162 @@
+/*
+    File: index.css
+    Description: Styles for the payment success page components.
+*/
+
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+    --extra-bold: 800;
+}
+
+.rectangle-bronze {
+    width: 50px;
+    height: 30px;
+    background-color: #CD7F32;
+    float: right;
+    margin: -1px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.rectangle-silver {
+    width: 50px;
+    height: 30px;
+    background-color: #CCCCCC;
+    float: right;
+    margin: -1px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.rectangle-gold {
+    width: 50px;
+    height: 30px;
+    background-color: #FFD700;
+    float: right;
+    margin: -1px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.package-name {
+    font-size: 16px;
+    font-weight: var(--extra-bold);
+    margin-top: 40px;
+}
+
+.pricing-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+  
+.pricing-item {
+    width: 240px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: row;
+    height: 115px;
+}
+
+.top-half {
+    padding-left: 29px;
+}
+
+.weekly {
+    font-size: 16px;
+    font-weight: var(--font-bold);
+    color: #666666;
+    margin-top: 40px;
+    margin-left: 2px;
+}
+
+.amount {
+    font-size: 52px;
+    font-weight: var(--font-bold);
+    display: inline-flex;
+}
+
+.monthly-payment {
+    color: #666666;
+    font-weight: var(--extra-bold);
+    font-size: 14;
+}
+
+.pricing-item img {
+    width: 30px;
+    height: 30px;
+    margin: 8px 13px;
+    opacity: 50%;
+}
+
+.pricing-link {
+    text-decoration: none;
+}
+
+.pricing-link:hover {
+    color: black;
+}
+
+.subscription-container {
+    background-color: #DBEEFB;
+    height: 87vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.divider {
+    width: 215px;
+    height: 1px; 
+    background-color: #ADA6A6; 
+    margin: 20px auto; 
+}
+
+.pricing-btn {
+    background-color: white;
+    width: 215px; 
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 18;
+    font-weight: var(--font-bold);
+}
+  
+.subscriptions {
+    width: 275px;
+    height: 440px;
+    margin-left: 40px;
+    background-color: white; 
+    box-sizing: border-box;
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 1);
+}
+
+.middle p {
+    font-size: 15px;
+    font-weight: var(--font-bold);
+}
+
+.bottom-half {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bronze {
+    border: 3px solid #CD7F32;
+}
+
+#silver {
+    border: 3px solid #CCCCCC;
+}
+
+#gold {
+    border: 3px solid #FFD700;
+}
+

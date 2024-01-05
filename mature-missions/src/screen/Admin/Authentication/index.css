@@ -1,0 +1,120 @@
+/*
+    File: index.css
+    Description: Styles for the admin login page.
+*/
+
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+.admin-login-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.admin-login-left {
+    width: 50%;
+    height: 100vh;
+    background-color: #DBEEFB;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-login-left p {
+    font-size: 40px;
+    font-weight: var(--font-bold);
+}
+
+.admin-login-right {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-login-title {
+    text-align: center;
+}
+
+.admin-credentials {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.admin-credentials input {
+    resize: none;
+    width: 35vw;
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid black;
+    font-size: 18px;
+
+}
+
+.admin-credentials label {
+    font-size: 18px;
+    font-weight: var(--font-semi-bold);
+}
+
+.admin-password-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-title {
+    font-weight: var(--font-bold);
+    color: #2071B5;
+    font-size: 32px;
+}
+
+.admin-subtitle {
+    font-weight: var(--font-semi-bold);
+    color: black;
+    font-size: 20px;
+}
+
+.login-btn-container {
+    padding-top: 4vh;
+}
+
+.credential-label span {
+    color: red;
+    font-weight: var(--font-semi-bold);
+}
+
+.admin-login-btn {
+    width: 35vw;
+    height: 7vh;
+    font-size: 22px;
+    font-weight: var(--font-bold);
+    border-radius: 100px;
+}
+
+.pwd-visibility {
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+}
+
+.pwd-visibility img {
+    width: 30px;
+    height: 30px;
+}
+
+#admin-components {
+    margin: 12px 0;
+}

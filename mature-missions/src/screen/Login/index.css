@@ -1,0 +1,130 @@
+/*
+    File: index.css
+    Description: Styles for the login screen components.
+*/
+
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+.login-screen-content {
+    display: flex;
+    align-items: center;
+}
+
+.image-box {
+    width: 30%;
+    height: 88vh;
+    flex-shrink: 0;
+    background: url("../../images/login-stock-image.png"), lightgray 50% / cover no-repeat;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.content-box {
+    width: 70%;
+    height: 88vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(76, 172, 233, 0.20);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.login-box {
+    display: flex;
+    width: 690px;
+    padding: 58px 49px 53px 49px;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 48px;
+    border-radius: 25px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.credentials-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    background: #FFF;
+}
+
+.frame-235 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.frame-8 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #FFF;
+}
+
+.login-title {
+    color: #333;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.frame-303 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.frame-302 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.frame-286 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.frame-243 {
+    display: flex;
+    padding-right: 0px;
+    align-items: flex-start;
+    gap: 410.137px;
+    align-self: stretch;
+}
+
+.hide-icon-box {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    padding-left: 55px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.login-button {
+    width: 32vw;
+    height: 7vh;
+    font-size: 22px;
+    font-weight: var(--font-bold);
+    border-radius: 100px;
+}

@@ -1,0 +1,135 @@
+/*
+    File: index.css
+    Description: Styles for the register page components.
+*/
+
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+    --extra-bold: 800;
+}
+
+.register-screen-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-image-box {
+    width: 30%;
+    height: 110vh;
+    flex-shrink: 0;
+    background: url("../../images/register-stock-image.png"), lightgray 50% / cover no-repeat;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.register-content-box {
+    background-color: #DBEEFB;
+    width: 70%;
+    height: 110vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(76, 172, 233, 0.20);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.registration-box {
+    display: flex;
+    width: 45vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    border-radius: 25px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.register-credentials-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    background: #FFF;
+}
+
+.create-account-title {
+    color: #333;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 40px;
+}
+
+.radio-buttons {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.radio-button-content {
+    display: flex;
+    padding: 0px 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: #111;
+    font-family: Open Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.radio-button-style {
+    width: 16px;
+    height: 16px;
+}
+
+.input-fields {
+    height: 50vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.agree-tcs-check {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.agree-tcs-check input {
+    margin-right: 13px;
+    margin-bottom: 13px;
+}
+
+.agree-tcs-check p a {
+    color: black;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+.agree-tcs-check span {
+    display: flex;
+    flex-direction: row;
+}
+
+.create-account-button {
+    width: 35vw;
+    height: 7vh;
+    font-size: 22px;
+    font-weight: var(--font-bold);
+    border-radius: 100px;
+    margin-bottom: 30px;
+}

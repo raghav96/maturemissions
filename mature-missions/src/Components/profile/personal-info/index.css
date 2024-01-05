@@ -1,0 +1,79 @@
+/*
+  File: styles.css
+  Description: Styles for user information component.
+*/
+
+/* Root variables for font styles */
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+/* Styles for the user information container */
+.user-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styles for the user information subcontainer */
+.user-info-subcontainer {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    margin-bottom: 2.5vh;
+}
+
+/* Styles for the user information header */
+.user-info-header {
+    font-size: 30px;
+    font-weight: var(--font-bold);
+    margin: 2.5vh auto;
+    border-bottom: 4px solid black;
+}
+
+/* Styles for the user information content */
+.user-info-content {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5vh 0;
+}
+
+/* Styles for labels inside user information content */
+.user-info-content label {
+    width: 14vw;
+    font-size: 20px;
+    font-weight: var(--font-bold);
+    margin-bottom: 1vh;
+}
+
+/* Styles for inputs inside user information content */
+.user-info-content input {
+    width: 50vw;
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid black;
+    font-size: 18px;
+    appearance: none;
+}
+
+/* Styles for the save changes button */
+.save-changes-btn {
+    width: 50vw;
+    height: 6vh;
+    margin-top: 2.5vh;
+    margin-bottom: 5vh;
+    border-radius: 25px;
+    font-weight: var(--font-semi-bold);
+    font-size: 22px;
+    align-items: center;
+    border: 2px solid #111B47;
+    background-color: white;
+    color: black;
+    display: inline-flex;
+    justify-content: center;
+}

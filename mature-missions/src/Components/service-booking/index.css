@@ -1,0 +1,99 @@
+/* 
+    File: index.css
+    Description: Styles for service booking.
+*/
+
+/* Root variables for font styles */
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+    --extra-bold: 800;
+}
+
+/* Styles for the .modal-header class */
+.modal-header {
+    background-color: #111B47;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styles for the .modal-title class */
+.modal-title {
+    font-size: 48px;
+    font-weight: var(--font-bold);
+    color: white;
+}
+
+/* Styles for the .modal-body class */
+.modal-body {
+    background-color: #DAEDFA;
+    border-bottom: 3px solid black;
+}
+
+/* Styles for the .confirm-body class */
+.confirm-body {
+    font-weight: var(--font-semi-bold);
+    font-size: 30px;
+}
+
+/* Styles for the .modal-footer class */
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #FAFAFB;
+}
+
+/* Styles for buttons inside .modal-footer */
+.modal-footer button {
+    width: 100%;
+    height: 87px;
+    border: none;
+    border-radius: 25px;
+}
+
+/* Styles for the .circle class */
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px; 
+    background-color: #45539D; 
+    border-radius: 50%; 
+    color: white; 
+    font-weight: bold;
+    font-size: 32px;
+    font-weight: var(--font-bold);
+}
+
+/* Styles for the .book class */
+.book {
+    display: flex;
+    flex-direction: row;
+    width: 550px;
+    height: 550px;
+}
+
+/* Styles for the #book ID */
+#book {
+    background-color: #111B47;
+    color: white;
+    font-size: 36px;
+    font-weight: var(--extra-bold);
+    border: 2px solid #111B47;
+}
+
+/* Styles for the #close ID */
+#close {
+    background-color: white;
+    font-size: 36px;
+    font-weight: var(--extra-bold);
+    color: #111B47;
+    border: 2px solid #111B47;
+}

@@ -1,0 +1,94 @@
+/*
+    File: index.css
+    Description: Styles for active subscription component.
+*/
+
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+.active-subscription-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscription-heading {
+    font-size: 30px;
+    font-weight: var(--font-bold);
+    margin: 2.5vh auto;
+    border-bottom: 4px solid black;
+}
+
+.subscription-subheading {
+    font-size: 24px;
+    color: #3770B0;
+    font-weight: var(--font-bold);
+    width: 20vw;
+}
+
+.subscription-text {
+    font-size: 18px;
+    font-weight: var(--font-semi-bold);
+}
+
+.subscription-content {
+    width: 50vw;
+}
+
+.active-subscription-box {
+    width: 50vw;
+    border: 4px solid #F0F0F0;
+    margin-top: 2.5vh;
+    margin-bottom: 5vh;
+    padding-bottom: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.active-subscription-box p {
+    font-size: 24px;
+    font-weight: var(--font-bold);
+    padding-top: 2.5vh;
+    border-bottom: 2px solid black;
+    color: #3770B0;
+
+}
+
+.active-subscription-box button {
+    width: 16vw;
+    height: 6vh;
+    margin: 2.5vh 2.5vw;
+    border-radius: 25px;
+    font-weight: var(--font-semi-bold);
+    font-size: 20px;
+    align-items: center;
+    border: 2px solid #111B47;
+    background-color: white;
+    color: black;
+
+    text-align: center;
+}
+
+.subscription-edit {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    padding-top: 1vh;
+}
+
+#subscription-cancel {
+    background-color: #3770B0;
+    color: white;
+    border: 2px solid #3770B0;
+    margin-bottom: 2.5vh;
+
+}

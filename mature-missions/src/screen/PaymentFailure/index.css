@@ -1,0 +1,40 @@
+/*
+    File: index.css
+    Description: Styles for the payment failure page components.
+*/
+
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+.about-container {
+    overflow-y: auto;
+}
+
+.about {
+    width: 100%;
+    height: 198px;
+    background-color: #DBEEFB; 
+    font-size: 34px;
+    font-weight: var(--font-bold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-description {
+    width: 85%;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    margin-left: 126px;
+}
+
+.description {
+    font-size: 21px;
+    font-weight: var(--font-semi-bold);
+}
+

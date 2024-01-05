@@ -1,0 +1,62 @@
+/*
+    File: index.css
+    Description: Styles for the service description page components.
+*/
+
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+.services-container {
+    overflow-y: auto;
+}
+
+.service {
+    width: 100%;
+    height: 198px;
+    background-color: #DBEEFB; 
+    font-size: 34px;
+    font-weight: var(--font-bold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.req-btn {
+    width: 100%;
+    height: 130px;
+    background-color: #111B47; 
+    font-size: 28px;
+    font-weight: var(--font-bold);
+    color: white;
+    border: none;
+}
+
+.service-description {
+    width: 85%;
+    margin-top: 50px;
+    margin-left: 126px;
+}
+
+.why-join {
+    font-size: 22px;
+    font-weight: var(--font-bold);
+}
+
+.about-service {
+    font-size: 21px;
+    font-weight: var(--font-semi-bold);
+}
+
+.faq {
+    width: 85%;
+    font-size: 22px;
+    margin-left: 126px;
+    margin-bottom: 100px;
+    font-weight: var(--font-bold);
+}
+

@@ -1,0 +1,109 @@
+/*
+    File: index.css
+    Description: Styles for the admin panel components.
+*/
+
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+    --extra-bold: 800;
+}
+
+.admin-panel-subcontainer {
+    display: flex;
+    flex-direction: row;
+    background-color: #F7F7F7;
+}
+
+.admin-panel-directory {
+    width: 25vw;
+    height: 100vh;
+}
+
+.success-fail-component {
+    width: 100vw;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.success-fail-component div {
+    font-size: 50px;
+}
+
+.admin-panel-directory {
+    width: 25vw;
+    height: 100vh;
+    background-color: #111B47;
+}
+
+.admin-panel-directory ul {
+    list-style: none;
+
+}
+
+.admin-panel-directory li {
+    font-size: 24px;
+    color: white;
+    font-weight: var(--font-bold);
+    padding: 3vh 0;
+}
+
+.admin-panel-directory a {
+    text-decoration: none;
+}
+
+.admin-panel-directory li:hover {
+    border-bottom: 3px solid white;    
+}
+
+.admin-panel-content {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-panel-box {
+    width: 77.5vw;
+    height: 97vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.admin-panel-box {
+    width: 77.5vw;
+    height: 97vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.admin-panel-item-box {
+    width: 77.5vw;
+    height: 97vh;
+    background-color: white;
+}
+
+.admin-panel-content p {
+    font-size: 32px;
+    font-weight: var(--font-bold);
+}
+
+.panel-item-content {
+    display: flex;
+    justify-content: flex-start;
+}
+

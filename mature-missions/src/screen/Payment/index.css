@@ -1,0 +1,479 @@
+/*
+    File: index.css
+    Description: Styles for the payment page components.
+*/
+
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+.payment-content {
+    background-color: #DBEEFB;
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-box {
+    width: 645px;
+    height: 50vh;
+    flex-shrink: 0;
+    border-radius: 25px;
+    border: 1px solid #DBC7C7;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.payment-details {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: space-between;
+    margin: 2vh 0;
+}
+
+.payment-box-title {
+    width: 522px;
+    height: 38px;
+    margin: auto;
+    margin-bottom: 18px;
+    margin-top: 50px;
+}
+
+.payment-box-title-text {
+    width: 237px;
+    height: 26px;
+    flex-shrink: 0;
+    color: #111B47;
+    font-family: Open Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.chosen-plan-headings {
+    width: 522px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: 4px 4px 0px 0px;
+    border-top: 0.5px solid #E3E3E3;
+    border-right: 0.5px solid #E3E3E3;
+    border-left: 0.5px solid #E3E3E3;
+    background: #111B47;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: auto;
+}
+
+.name-heading {
+    display: flex;
+    width: 99px;
+    height: 38px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    margin-left: 10px;
+}
+
+.price-heading {
+    display: flex;
+    width: 117px;
+    height: 38px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.dates-heading {
+    display: flex;
+    width: 293px;
+    height: 38px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.chosen-plan-details {
+    width: 522px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 0px 0px 4px 4px;
+    border-right: 0.5px solid #E0E0E0;
+    border-bottom: 0.5px solid #E0E0E0;
+    border-left: 0.5px solid #E0E0E0;
+    background: #FFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: auto;
+}
+
+.package-details {
+    display: flex;
+    width: 99px;
+    height: 50px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #111B47;
+    font-family: Open Sans;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    margin-left: 10px;
+}
+
+.price-details {
+    display: flex;
+    width: 117px;
+    height: 50px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #111B47;
+    font-family: Open Sans;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.dates-details {
+    display: flex;
+    width: 294px;
+    height: 50px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #111B47;
+    font-family: Open Sans;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.name-details {
+    display: flex;
+    width: 527px;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.card-details {
+    display: flex;
+    width: 527px;
+    height: 151px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
+    justify-content: center;
+}
+
+.card-number-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.card-number-details-title {
+    color: var(--grey-labels, #4F5B76);
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.card-number-and-bank-symbols {
+    display: flex;
+    flex-direction: row;
+    width: 527px;
+    height: 43px;
+    border-radius: 6px;
+    border: 2px solid var(--grey-border, #E0E0E0);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.07);
+
+    align-items: center;
+}
+
+.card-number {
+    display: flex;
+    height: 39.5px;
+    width: 405px;
+    padding: 10px 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+    border-radius: 6px;
+    border: 0px solid var(--grey-border, #E0E0E0);
+    background: var(--mono-white, #FFF);
+
+    margin: auto;
+    margin-left: 0;
+}
+
+.visa-symbol {
+    width: 23.5px;
+    height: 15.5px;
+    margin: auto;
+}
+
+.mastercard-symbol {
+    width: 24px;
+    height: 16px;
+    margin: auto;
+}
+
+.amex-symbol {
+    width: 24px;
+    height: 16px;
+    margin: auto;
+}
+
+.discover-symbol {
+    width: 23.75px;
+    height: 16px;
+    margin: auto;
+    margin-right: 8px;
+}
+
+.expiry-and-cvc-details {
+    display: flex;
+    width: 527px;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.expiry-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex: 1 0 0;
+}
+
+.cvc-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.expiry-details-title {
+    color: var(--grey-labels, #4F5B76);
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.cvc-details-title {
+    color: var(--grey-labels, #4F5B76);
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.expiry {
+    display: flex;
+    height: 43px;
+    padding: 10px 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+    border-radius: 6px;
+    border: 2px solid var(--grey-border, #E0E0E0);
+    background: var(--mono-white, #FFF);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.07);
+}
+
+.cvc {
+    display: flex;
+    height: 43px;
+    padding: 10px 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+    border-radius: 6px;
+    border: 2px solid var(--grey-border, #E0E0E0);
+    background: var(--mono-white, #FFF);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.07);
+}
+
+.first-name-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex: 1 0 0;
+}
+
+.last-name-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.first-name-title {
+    color: var(--grey-labels, #4F5B76);
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.asterisk-symbol {
+    color: #F00;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.last-name-title {
+    color: var(--grey-labels, #4F5B76);
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.first-name {
+    display: flex;
+    height: 43px;
+    padding: 10px 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+    border-radius: 6px;
+    border: 2px solid var(--grey-border, #E0E0E0);
+    background: var(--mono-white, #FFF);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.07);
+}
+
+.last-name {
+    display: flex;
+    height: 43px;
+    padding: 10px 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+    border-radius: 6px;
+    border: 2px solid var(--grey-border, #E0E0E0);
+    background: var(--mono-white, #FFF);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.07);
+}
+
+.pay-now-button {
+    width: 527px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 25px;
+    background: #111B47;
+
+    display: flex;
+    width: 521px;
+    height: 50px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    margin: auto;
+    margin-bottom: 25px;
+}
+
+.lock-symbol {
+    width: 15px;
+    height: 20.625px;
+    flex-shrink: 0;
+    margin-right: 12px;
+}
+
+.first-name::placeholder {
+    font-style: italic;
+}
+
+.last-name::placeholder {
+    font-style: italic;
+}
+
+.card-number::placeholder {
+    font-style: italic;
+}
+
+.expiry::placeholder {
+    font-style: italic;
+}
+
+.cvc::placeholder {
+    font-style: italic;
+}

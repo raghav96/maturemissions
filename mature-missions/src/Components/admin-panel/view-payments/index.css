@@ -1,0 +1,41 @@
+/* 
+    File: index.css
+    Description: Styles for the payments table.
+*/
+
+/* Define CSS variables for consistent font usage */
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+/* Styles for the .view-payments-table class */
+.view-payments-table {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+/* Styles for the span element inside .view-payments-table */
+.view-payments-table span {
+    text-align: center;
+    background-color: #9CB8D7;
+    padding-top: 1.5vh;
+    width: 100%;
+}
+
+/* Styles for the paragraphs inside .view-payments-table span */
+.view-payments-table span p {
+    font-size: 28px;
+    font-weight: var(--font-bold);
+}
+
+/* Styles for the table element */
+table {
+    table-layout: fixed;
+    width: 100%;
+}

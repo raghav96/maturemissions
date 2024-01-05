@@ -1,0 +1,51 @@
+/* 
+    File: timePicker.css 
+    Description: Styles for the time picker component.
+*/
+
+/* Root variables for font styles */
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+    --extra-bold: 800;
+}
+
+/* Time Picker container styles */
+.timePicker {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10vh;
+}
+
+/* Heading styles */
+.timePicker p {
+    display: block;
+    margin-bottom: 3vh;
+    font-size: 30px;
+    color: #111B47;
+    border-bottom: 5px solid #111B47;
+    font-weight: var(--font-bold);
+}
+
+/* Time input styles */
+.timePicker input[type="time"] {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 26px;
+    width: 450px;
+    height: 80px;
+    background-color: #111B47;
+    color: white;
+    font-weight: var(--font-semi-bold);
+}
+
+/* Customizing the time input calendar picker icon */
+.timePicker input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}

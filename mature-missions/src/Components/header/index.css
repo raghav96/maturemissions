@@ -1,0 +1,189 @@
+/* 
+    File: index.css
+    Description: Styles for the application header, navigation links, and buttons.
+*/
+
+/* Root variables for font styles */
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+    --extra-bold: 800;
+}
+
+/* Navigation links styles for left and right alignments */
+.navlink-l {
+    text-decoration: none;
+    color: black;
+}
+
+.navlink-r {
+    text-decoration: none;
+    color: white;
+}
+
+/* Navigation link hover styles */
+.navlink-r:hover {
+    color: white;
+}
+
+.navlink-l:hover {
+    color: black;
+}
+
+/* Admin button and anchor styles */
+.admin-button {
+    position: absolute;
+    right: 50px;
+}
+
+.admin-anchor img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Admin button and username styles */
+.admin-btn {
+    width: 14vw;
+    margin: 0 0.75vw;
+    font-size: 18px;
+    font-weight: var(--font-bold);
+}
+
+.admin-username {
+    width: 14vw;
+    margin: 0 1.75vw;
+    font-size: 18px;
+    font-weight: var(--font-bold);
+    cursor: auto;
+}
+
+/* Header component styles */
+.header-component {
+    width: 100%;
+    height: 100px;
+    background: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Header title and subtitle styles */
+.title {
+    font-weight: var(--font-bold);
+    color: #2071B5;
+    font-size: 28px;
+}
+
+.subtitle {
+    font-weight: var(--font-semi-bold);
+    color: black;
+    font-size: 18px;
+}
+
+/* Header title link styles */
+.head-title {
+    margin-left: 68px;
+}
+
+.head-title a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Header items and anchor styles */
+.header-items {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-items a {
+    font-weight: var(--font-bold);
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 50px;
+}
+
+.header-anchor {
+    color: black;
+    text-decoration: none;
+}
+
+/* Header anchor hover styles */
+.header-anchor:hover {
+    color: black;
+}
+
+/* Dropdown menu and item styles */
+.dropdown-menu {
+    background-color: #111B47;
+    border-radius: 10px;
+}
+
+.dropdown-item {
+    color: white;
+    padding: 15px 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* Dropdown item hover styles */
+.dropdown-item:hover {
+    background-color: #DBEEFB;
+    color: black;
+}
+
+/* Header button and icon styles */
+.header-buttons button:first-child {
+    margin-right: 10px;
+}
+
+.header-buttons {
+    margin-right: 50px;
+}
+
+.header-buttons img {
+    width: 45px;
+    height: 45px;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+}
+
+/* Profile and notification anchor styles */
+.profile-anchor {
+    margin-right: 100px;
+    cursor: pointer;
+}
+
+.notification-anchor {
+    margin-right: 70px;
+    cursor: pointer;
+}
+
+/* Header button styles */
+.header-buttons button {
+    text-align: center;
+    width: 150px;
+    height: 35px;
+    border-radius: 25px;
+    font-weight: var(--font-semi-bold);
+    font-size: 20px;
+    align-items: center;
+    border: 2px solid #111B47;
+    background-color: white;
+    color: black;
+    display: inline-flex;
+    justify-content: center;
+}
+
+/* Secondary button styles */
+#secondary {
+    border: 2px solid #111B47;
+    background-color: #111B47;
+    color: white;
+}

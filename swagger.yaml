@@ -1,0 +1,648 @@
+openapi: 3.0.3
+info:
+  title: Mature Missions - OpenAPI 3.0
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+tags:
+  - name: signup-provider
+    description: Signup for Caregiver
+  - name: signup-user
+    description: Signup for Elderly
+  - name: login
+    description: Login for Users
+  - name: payment
+    description: Operations about Payment
+  - name: admin-login
+    description: Login for Admin
+  - name: admin-panel
+    description: Operations about Amin
+  - name: book-service
+    description: Operations about Booking Service
+  - name: notifications-provider
+    description: Operations about Notifications to Caregiver
+  - name: notifications-user 
+    description: Operations about Notifications to Elderly
+paths:
+  /signup-provider:
+    post:
+      tags:
+        - signup-provider
+      summary: Register a new caregiver
+      description: Add a new caregiver to the website
+      operationId: addCaregiver
+      requestBody:
+        description: Add a new caregiver
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaregiverSignUp'
+        required: true
+      responses:
+        '201':
+          description: Caregiver User registered successfully
+        '400':
+          description: Bad request or validation error
+        '500':
+          description: Internal server error
+  /signup-user:
+    post:
+      tags:
+        - signup-user
+      summary: Register a new elderly
+      description: Add a new elderly to the website
+      operationId: addElderly
+      requestBody:
+        description: Add a new elderly
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSignUp'
+        required: true
+      responses:
+        '201':
+          description: Elderly User registered successfully
+        '400':
+          description: Bad request or validation error
+        '500':
+          description: Internal server error
+  /login:
+    post:
+      tags:
+        - login
+      summary: Authenticate and login a user
+      description: Login a user
+      operationId: loginUser
+      requestBody:
+        description: Login a user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      responses:
+        '200':
+          description: User logged in successfully
+        '401':
+          description: Unauthorized - invalid credentials
+        '500':
+          description: Internal server error
+  /payment:
+    post:
+      tags:
+        - payment
+      summary: Process a payment using Stripe
+      description: Add a new payment for the user
+      operationId: payment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+      responses:
+        '200':
+          description: Payment successful
+        '400':
+          description: Bad request or validation error
+        '500':
+          description: Internal server error
+
+  /admin-login:
+    post:
+      tags:
+        - admin-login
+      summary: Authenticate and login a admin
+      description: Login a admin
+      operationId: loginAdmin
+      requestBody:
+        description: Login a admin
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminLogin'
+        required: true
+      responses:
+        '200':
+          description: Admin logged in successfully
+        '401':
+          description: Unauthorized - invalid credentials
+        '500':
+          description: Internal server error   
+  /users:
+    get:
+      tags:
+        - admin-panel
+      summary: Get all users
+      responses:
+        '200':
+          description: List of users retrieved successfully
+        '500':
+          description: Internal server error
+
+  /users/{userId}/payments:
+    get:
+      tags:
+        - admin-panel
+      summary: Get all active payments for a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user
+      responses:
+        '200':
+          description: List of active payments retrieved successfully
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+          
+    delete:
+      tags:
+        - admin-panel
+      summary: Delete all payments for a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user
+      responses:
+        '204':
+          description: Payments deleted successfully
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+
+  /users/{userId}/reported-services:
+    get:
+      tags:
+        - admin-panel
+      summary: Get all reported services made by a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user
+      responses:
+        '200':
+          description: List of reported services retrieved successfully
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+    
+    delete:
+      tags:
+        - admin-panel
+      summary: Delete all reported services made by a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user
+      responses:
+        '204':
+          description: Reported services deleted successfully
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+
+  /users/{userId}/active-service-requests:
+    get:
+      tags:
+        - admin-panel
+      summary: Get all active service requests made by an elderly user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user
+      responses:
+        '200':
+          description: List of active service requests retrieved successfully
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+    
+    delete:
+      tags:
+        - admin-panel
+      summary: Delete all active service requests made by an elderly user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user
+      responses:
+        '204':
+          description: Active service requests deleted successfully
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+          
+  /users/{userId}:
+    delete:
+      tags:
+        - admin-panel
+      summary: Delete a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user
+      responses:
+        '204':
+          description: User deleted successfully
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+          
+  /users/{userId}/services/{serviceId}/service-request:
+    post:
+      tags:
+        - book-service
+      summary: Book a service for a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user
+        - in: path
+          name: serviceId
+          required: true
+          schema:
+            type: integer
+          description: ID of the service
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingRequest'
+      responses:
+        '201':
+          description: Service booking successful
+        '400':
+          description: Bad request or validation error
+        '404':
+          description: User or service not found
+        '500':
+          description: Internal server error
+          
+
+  
+  /users/{userId}/services/{serviceId}/service-request/{requestId}/accept:
+    put:
+      tags:
+        - notifications-provider
+      summary: Accept a service request for a service
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the elderly user whose service request is accepted
+        - in: path
+          name: serviceId
+          required: true
+          schema:
+            type: integer
+          description: ID of the service associated with the service request
+        - in: path
+          name: requestId
+          required: true
+          schema:
+            type: integer
+          description: ID of the service request to be accepted
+      responses:
+        '200':
+          description: Service request accepted successfully
+        '404':
+          description: User, service, or service request not found
+        '500':
+          description: Internal server error
+
+  /users/{userId}/services/{serviceId}/service-request/{requestId}/cancel:
+    put:
+      tags:
+        - notifications-provider
+        - notifications-user
+      summary: Cancel a service request for a service
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the elderly user whose service request is cancelled
+        - in: path
+          name: serviceId
+          required: true
+          schema:
+            type: integer
+          description: ID of the service associated with the service request
+        - in: path
+          name: requestId
+          required: true
+          schema:
+            type: integer
+          description: ID of the service request to be cancelled
+      responses:
+        '200':
+          description: Service request cancelled successfully
+        '404':
+          description: User, service, or service request not found
+        '500':
+          description: Internal server error
+  
+  
+  /users/{userId}/services/{serviceId}/service-request/{requestId}/review:
+    post:
+      tags:
+        - notifications-user
+      summary: Give a review and rating for a completed service
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the elderly user providing the review
+        - in: path
+          name: serviceId
+          required: true
+          schema:
+            type: integer
+          description: ID of the completed service being reviewed
+        - in: path
+          name: requestId
+          required: true
+          schema:
+            type: integer
+          description: ID of the completed service request to be reviewed
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewRequest'
+      responses:
+        '201':
+          description: Review and rating submitted successfully
+        '400':
+          description: Bad request or validation error
+        '404':
+          description: User or service not found
+        '500':
+          description: Internal server error
+
+  /users/{userId}/services/{serviceId}/service-request/{requestId}/report:
+    post:
+      tags:
+        - notifications-user
+      summary: Report a service
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the elderly user reporting the service
+        - in: path
+          name: serviceId
+          required: true
+          schema:
+            type: integer
+          description: ID of the service being reported
+        - in: path
+          name: requestId
+          required: true
+          schema:
+            type: integer
+          description: ID of the service request to be reviewed
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportRequest'
+      responses:
+        '201':
+          description: Service reported successfully
+        '400':
+          description: Bad request or validation error
+        '404':
+          description: User or service not found
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    CaregiverSignUp:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the caregiver.
+        username:
+          type: string
+          description: The username chosen by the caregiver.
+        phoneNumber:
+          type: string
+          description: The phone number of the caregiver.
+        email:
+          type: string
+          format: email
+          description: The email address of the caregiver.
+        age:
+          type: integer
+          description: The user's age.
+        cardDetails: # Storing the card details for the caregiver
+          type: object
+          description: Credit card details.
+          properties:
+            cardNumber:
+              type: string
+              description: The credit card number.
+            expiry:
+              type: string
+              description: The card's expiration date (e.g., "MM/YY").
+            cvc:
+              type: string
+              description: The card's security code (CVC).
+        password:
+          type: string
+          format: password
+          description: The caregiver's password.
+
+      required:
+        - name
+        - username
+        - phoneNumber
+        - email
+        - age
+        - cardDetails
+        - password
+    UserSignUp:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the elderly.
+        username:
+          type: string
+          description: The username chosen by the elderly.
+        phoneNumber:
+          type: string
+          description: The phone number of the elderly.
+        email:
+          type: string
+          format: email
+          description: The email address of the elderly.
+        age:
+          type: integer
+          description: The elderly's age.
+        address:
+          type: string
+          description: The elderly's address.
+        medicareNumber:
+          type: string
+          description: The elderly's Medicare number.
+        password:
+          type: string
+          format: password
+          description: The elderly's password.
+
+      required:
+        - name
+        - username
+        - phoneNumber
+        - email
+        - age
+        - medicareNumber
+        - password
+    Login:
+      type: object
+      properties:
+        usernameOrEmail:
+          type: string
+          description: The username or email address of the user.
+        password:
+          type: string
+          format: password
+          description: The user's password.
+
+      required:
+        - usernameOrEmail
+        - password
+    PaymentRequest:
+      type: object
+      properties:
+        amount:
+          type: integer
+          description: The payment amount in cents.
+        payment_date:
+          type: string
+          format: date
+          description: The date of the payment (DD-MM-YYYY).
+        payment_details: # Card details for the elderly
+          type: object
+          description: Credit card details.
+          properties:
+            cardNumber:
+              type: string
+              description: The credit card number.
+            expiry:
+              type: string
+              description: The card's expiration date (e.g., "MM/YY").
+            cvc:
+              type: string
+              description: The card's security code (CVC).
+        payment_method:
+          type: string
+          description: The payment method used (e.g., credit card).
+        status:
+          type: string
+          description: The status of the payment (e.g., pending, completed).
+        request_id:
+          type: integer
+          description: The unique identifier for the associated request.
+      required:
+        - amount
+        - payment_date
+        - payment_details
+        - payment_method
+        - status
+        - request_id
+    AdminLogin:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      required:
+        - email
+        - password
+    BookingRequest:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        time:
+          type: string
+          format: time
+        additionalInfo:
+          type: string
+      required:
+        - date
+        - time
+    ReviewRequest:
+      type: object
+      properties:
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        comment:
+          type: string
+        status:
+          type: string
+      required:
+        - status
+    ReportRequest:
+      type: object
+      properties:
+        comment:
+          type: string
+        status:
+          type: string
+      required:
+        - comment
+        - status
+    

@@ -1,0 +1,9 @@
+/* 
+    File: index.css
+    Description: Styles for the caregiver details component.
+*/
+
+/* Setting top margin for the caregiver details component */
+#caregiver-details {
+    margin-top: 2.5vh; 
+}

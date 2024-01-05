@@ -1,0 +1,81 @@
+/*
+    File: index.css
+    Description: Styles for the elderly dashboard components.
+*/
+
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+
+.image-container {
+    position: absolute;
+    top: 21%;
+    right: 0;
+}
+
+.image-container img {
+    width: 515px;
+    height: 564px;
+    border-top-left-radius:  25px;
+    border-bottom-left-radius:  25px;
+    opacity: 90%;
+}
+
+.elderly-subcontainer {
+    width: 542px;
+    height: 460px;
+    position: absolute;
+    top: 28%;
+    left: 3.5%;
+
+}
+
+.dashboard-title {
+    font-weight: var(--font-bold);
+    color: #111B47;
+    font-size: 40px;
+}
+
+.dashboard-subtitle {
+    font-weight: var(--font-regular);
+    color: black;
+    font-size: 18px;
+}
+
+.elderly-content-buttons {
+    margin-top: 40px;
+}
+
+.elderly-content-buttons button {
+    text-align: center;
+    width: 550px;
+    height: 75px;
+    border-radius: 25px;
+    font-weight: var(--font-bold);
+    font-size: 20px;
+    align-items: center;
+    border: 2px solid #111B47;
+    background-color: white;
+    color: black;
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+#secondary {
+    border: 2px solid #111B47;
+    background-color: #111B47;
+    color: white;
+}
+
+#primary {
+    background-color: white;
+    border: 2px solid #111B47;
+    color: #111B47;
+}
+

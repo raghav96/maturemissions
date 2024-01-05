@@ -1,0 +1,74 @@
+/* 
+    File: index.css
+    Description: CSS styles for the calendar component.
+*/
+
+/* Define CSS variables for consistent font usage */
+:root {
+  --font-family: 'Open Sans', sans-serif;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+}
+
+/* Calendar container styles */
+.calendar-container {
+  margin-top: 10vh;
+}
+
+/* Calendar styles */
+.react-calendar {
+  width: 450px;
+  border: none;
+}
+
+/* Calendar day tile styles */
+.react-calendar__tile {
+  height: 52px;
+}
+
+/* Weekend day styles */
+.react-calendar__month-view__days__day--weekend {
+  color: #45539D;
+  font-weight: var(--font-semi-bold);
+}
+
+/* Current day styles */
+.react-calendar__tile--now {
+  color: white;
+  background-color: #45539D;
+  font-weight: var(--font-semi-bold);
+}
+
+/* Hover and focus styles for current day */
+.react-calendar__tile--now:hover,
+.react-calendar__tile--now:focus {
+  background-color: #111B47;
+  color: white;
+  font-weight: var(--font-semi-bold);
+}
+
+/* Navigation button styles */
+.react-calendar__navigation button {
+  color: #45539D;
+  font-weight: var(--font-semi-bold);
+}
+
+/* Hover and focus styles for enabled tiles */
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background: #111B47;
+  color: white;
+  font-weight: var(--font-semi-bold);
+}
+
+/* Selected date styles */
+.selected-date {
+  text-align: center;
+  padding: 10px;
+  font-size: 24px;
+  font-weight: var(--font-semi-bold);
+  background-color: #111B47;
+  color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

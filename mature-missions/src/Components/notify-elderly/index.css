@@ -1,0 +1,147 @@
+/*
+    File: index.css
+    Description: Styles for the elderly notification component.
+*/
+
+/* Root variables for font styles */
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+/* Styles for the notification details container */
+.notification-details {
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+/* Styles for the details container inside the notification */
+.details-container {
+    padding-left: 15px;
+}
+
+/* Styles for the header containing rating and reporting options */
+.rating-header,
+.reporting-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Styles for the open service request section */
+#open {
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Styles for titles in rating and reporting sections */
+.rating-title,
+.reporting-title {
+    font-size: 36px;
+}
+
+/* Styles for description paragraphs in rating and reporting sections */
+.rating-description p,
+.reporting-description p {
+    font-size: 22px;
+}
+
+/* Styles for dropdown menus in rating and reporting sections */
+.rating-dropdown,
+.reporting-dropdown {
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styles for select elements inside dropdown menus */
+.rating-dropdown select,
+.reporting-dropdown select {
+    margin: 10px 0;
+    font-weight: var(--font-semi-bold);
+    width: 25%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Styles for review textareas in rating and reporting sections */
+.rating-review,
+.reporting-review {
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+/* Styles for textarea elements inside review sections */
+.rating-review textarea,
+.reporting-review textarea {
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    height: 35vh;
+    resize: none;
+    overflow-y: auto;
+}
+
+/* Styles for error messages in rating, reporting, and dropdown sections */
+.rating-review span,
+.reporting-review span,
+.rating-dropdown span {
+    color: red;
+}
+
+/* Styles for close buttons in rating and reporting sections */
+.close {
+    color: white;
+    font-weight: var(--font-bold);
+    font-size: 60px;
+    background-color: transparent;
+    border: none;
+}
+
+/* Styles for status circles indicating the status of service requests */
+.status-circle {
+    display: inline-flex;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    animation: pulsate 2s infinite;
+}
+
+/* Styles for accepted status circle */
+.status-accepted {
+    background-color: green;
+}
+
+/* Styles for open status circle */
+.status-open {
+    background-color: orange;
+}
+
+/* Styles for reported status circle */
+.status-reported {
+    background-color: red;
+}
+
+/* Styles for the decline button in service request notifications */
+#decline-notify {
+    border: 2px solid black;
+}
+
+/* Keyframe animation for pulsating status circles */
+@keyframes pulsate {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}

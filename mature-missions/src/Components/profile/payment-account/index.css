@@ -1,0 +1,37 @@
+/*
+  File: index.css
+  Description: Styles for payment account component.
+*/
+
+/* Root variables for font styles */
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+/* Styles for the active services container */
+.payment-account-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styles for the active services header */
+.payment-account-header {
+    font-size: 30px;
+    font-weight: var(--font-bold);
+    margin: 2.5vh auto;
+    border-bottom: 4px solid black;
+}
+
+/* Styles for the active services subheading */
+.payment-account-subheading {
+    font-size: 20px;
+    font-weight: var(--font-semi-bold);
+    margin: 1vh auto;
+    text-align: center;
+}

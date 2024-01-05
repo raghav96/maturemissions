@@ -1,0 +1,99 @@
+/*
+    File: index.css
+    Description: Styles for the terms and conditions page components.
+*/
+
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+    --extra-bold: 800;
+}
+
+
+.tc-container {
+    background-color: #FAFAFB;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tc-box {
+    width: 800px;
+    background-color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.40);
+    display: flex;
+    flex-direction: column;
+}
+
+.tc-body {
+    position: relative;
+    left: 80px;
+    top: 40px;
+}
+
+.tc-title {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.tc-heading {
+    font-size: 16;
+    font-weight: var(--font-bold);
+    color: #2071B5;
+}
+
+.tc-agreement {
+    font-size: 14;
+    font-weight: var(--font-bold);
+    color: #132F41;
+}
+
+.tc-data p {
+    width: 650px;
+    height: 425px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: #6B6B6B;
+    font-size: 14;
+    font-weight: var(--font-regular);
+    margin-bottom: 100px;
+}
+
+.tc-data p::-webkit-scrollbar {
+    width: 7px;
+    border-radius: 64px;
+    height: 42px; 
+}
+  
+.tc-data p::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+}
+  
+.tc-data p::-webkit-scrollbar-thumb {
+    background-color: #2071B5; 
+}
+
+.go-back-btn {
+    position: relative;
+    left: 510px;
+    bottom: 70px;
+}
+
+.go-back-btn button {
+    width: 120px;
+    height: 36px;
+    background-color: #111B47;
+    border-radius: 5px;
+    color: white;
+    font-size: 16;
+    font-weight: var(--font-bold);
+}
+
+.go-back-btn button:hover {
+    color: white;
+}
