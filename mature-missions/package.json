@@ -3,11 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/plugin-transform-class-properties": "^7.24.6",
-    "@babel/plugin-transform-nullish-coalescing-operator": "^7.24.6",
-    "@babel/plugin-transform-numeric-separator": "^7.24.6",
-    "@babel/plugin-transform-optional-chaining": "^7.24.6",
-    "@babel/plugin-transform-private-methods": "^7.24.6",
     "@stripe/react-stripe-js": "^2.3.0",
     "@stripe/stripe-js": "^2.1.6",
     "@svgr/plugin-svgo": "^8.1.0",
@@ -55,11 +50,11 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@babel/plugin-transform-class-properties": "^7.24.6",
-    "@babel/plugin-transform-nullish-coalescing-operator": "^7.24.6",
-    "@babel/plugin-transform-numeric-separator": "^7.24.6",
-    "@babel/plugin-transform-optional-chaining": "^7.24.6",
-    "@babel/plugin-transform-private-methods": "^7.24.6"
+    // "@babel/plugin-transform-private-property-in-object": "^7.21.11",
+    // "@babel/plugin-transform-class-properties": "^7.24.6",
+    // "@babel/plugin-transform-nullish-coalescing-operator": "^7.24.6",
+    // "@babel/plugin-transform-numeric-separator": "^7.24.6",
+    // "@babel/plugin-transform-optional-chaining": "^7.24.6",
+    // "@babel/plugin-transform-private-methods": "^7.24.6"
   }
 }
