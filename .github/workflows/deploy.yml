@@ -32,10 +32,14 @@ jobs:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: echo $HEROKU_API_KEY | heroku auth:token
 
-    - name: Build and Deploy Spring Boot App
+    - name: Build and Test Spring Boot App
       run: |
         cd maturemissions
-        ./gradlew clean build
+        ./gradlew clean build -Dspring.profiles.active=test
+
+    - name: Deploy Spring Boot App
+      run: |
+        cd maturemissions
         heroku deploy:jar build/libs/maturemissions-0.0.1-SNAPSHOT.jar --app maturemissions
 
     - name: Build and Deploy React App
