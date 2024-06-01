@@ -50,10 +50,12 @@ jobs:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: |
         cd mature-missions
-        npm install
-        npm run build
-        echo $HEROKU_API_KEY | heroku auth:token
+        git config --global user.name "Raghav Ravisankar"
+        git config --global user.email "raghav96@gmail.com"
         heroku buildpacks:set https://github.com/mars/create-react-app-buildpack.git --app maturemissions-frontend
-        git add build
-        git commit -m "Deploy React app"
-        git push heroku `git subtree split --prefix build main`:refs/heads/main --force
+        git init
+        git remote add heroku https://git.heroku.com/maturemissions-frontend.git
+        git add .
+        git commit -m "Deploying to Heroku"
+        git push -f heroku HEAD:main
+        
