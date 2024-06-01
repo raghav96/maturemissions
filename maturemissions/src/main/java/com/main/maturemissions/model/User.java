@@ -32,7 +32,7 @@ public class User {
     @Column
     private Boolean smsNotifications;
     @Lob
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "TEXT")
     private String imageLoc;
 
     public User() {
