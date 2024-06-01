@@ -46,10 +46,13 @@ jobs:
         heroku deploy:jar build/libs/maturemissions-0.0.1-SNAPSHOT.jar --app maturemissions
 
     - name: Build and Deploy React App
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: |
         cd mature-missions
         npm install
         npm run build
+        echo $HEROKU_API_KEY | heroku auth:token
         heroku buildpacks:set https://github.com/mars/create-react-app-buildpack.git --app maturemissions-frontend
         git add build
         git commit -m "Deploy React app"
