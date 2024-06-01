@@ -37,7 +37,7 @@ jobs:
         cd maturemissions
         ./gradlew clean build -Dspring.profiles.active=test
 
-    - name: Deploy Spring Boot Apcp
+    - name: Deploy Spring Boot App
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: |
@@ -46,16 +46,11 @@ jobs:
         heroku deploy:jar build/libs/maturemissions-0.0.1-SNAPSHOT.jar --app maturemissions
 
     - name: Build and Deploy React App
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: |
         cd mature-missions
-        git config --global user.name "Raghav Ravisankar"
-        git config --global user.email "raghav96@gmail.com"
+        npm install
+        npm run build
         heroku buildpacks:set https://github.com/mars/create-react-app-buildpack.git --app maturemissions-frontend
-        git init
-        git remote add heroku https://git.heroku.com/maturemissions-frontend.git
-        git add .
-        git commit -m "Deploying to Heroku"
-        git push -f heroku HEAD:main
-        
+        git add build
+        git commit -m "Deploy React app"
+        git push heroku `git subtree split --prefix build main`:refs/heads/main --force
