@@ -11,7 +11,6 @@ import { sendNotifications } from "../../notification-sender/notification-sender
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-
 class ManageUsers extends Component {
     constructor(props) {
         super(props);
@@ -24,7 +23,7 @@ class ManageUsers extends Component {
     async componentDidMount() {
         try {
             // Make a GET request to fetch user data from the server
-            const response = await axios.get('${apiUrl}/admin/users', {
+            const response = await axios.get(`${apiUrl}/admin/users`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}` // Include authorization token in the request header
                 }
@@ -58,7 +57,7 @@ class ManageUsers extends Component {
     deleteUser = async (index, active, user) => {  
         try {
             // Make a POST request to change user details (status) on the server
-            await axios.post('${apiUrl}/user/change-details', {
+            await axios.post(`${apiUrl}/user/change-details`, {
                 userId: user.id,
                 active: !active, // Toggle user status
                 type: "STATUS"
@@ -115,12 +114,12 @@ class ManageUsers extends Component {
                                 <td>{item.email}</td>
                                 <td>{item.number}</td>
                                 {/* Display user status */}
-                                { item.active.toString() === "false" && <td>Deactivated</td> }
-                                { item.active.toString() === "true" && <td>Activated</td> }
+                                {item.active.toString() === "false" && <td>Deactivated</td>}
+                                {item.active.toString() === "true" && <td>Activated</td>}
                                 {/* Render appropriate action button based on user status */}
                                 <td>
-                                    { item.active && <button className="btn btn-danger delete-button" onClick={() => this.deleteUser(index, item.active, item.user)}>Deactivate</button> }
-                                    { !item.active && <button className="btn btn-success delete-button" onClick={() => this.deleteUser(index, item.active, item.user)}>Activate</button> }
+                                    {item.active && <button className="btn btn-danger delete-button" onClick={() => this.deleteUser(index, item.active, item.user)}>Deactivate</button>}
+                                    {!item.active && <button className="btn btn-success delete-button" onClick={() => this.deleteUser(index, item.active, item.user)}>Activate</button>}
                                 </td>
                             </tr>
                         ))}
