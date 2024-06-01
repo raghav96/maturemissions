@@ -37,7 +37,9 @@ jobs:
         cd maturemissions
         ./gradlew clean build -Dspring.profiles.active=test
 
-    - name: Deploy Spring Boot App
+    - name: Deploy Spring Boot Apcp
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: |
         cd maturemissions
         heroku plugins:install heroku-cli-deploy
