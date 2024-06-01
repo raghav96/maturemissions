@@ -10,6 +10,8 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import { sendNotifications } from "../notification-sender/notification-sender";
+const apiUrl = process.env.REACT_APP_API_URL;
+
 
 class NotifyElderly extends Component {
     
@@ -49,7 +51,7 @@ class NotifyElderly extends Component {
     // Handle logic if service request has been canceled by the elderly
     cancelRequest = async () => {
         try {
-            const response = await axios.put('http://localhost:8080/notifications/elderly/cancel-request', {
+            const response = await axios.put('${apiUrl}/notifications/elderly/cancel-request', {
                 serviceRequestId: this.state.info.notification.id,
             });
 
@@ -69,7 +71,7 @@ class NotifyElderly extends Component {
     // Handle logic if service request has been completed by the elderly
     serviceComplete = async () => {
         try {
-            const response = await axios.put('http://localhost:8080/notifications/elderly/complete-request', {
+            const response = await axios.put('${apiUrl}/notifications/elderly/complete-request', {
                 serviceRequestId: this.state.info.notification.id,
                 rating: this.state.rating ? this.state.rating : 1,
                 description: this.state.reviewValue
@@ -107,7 +109,7 @@ class NotifyElderly extends Component {
     closeReport = async () => {
         this.setState({ showReport: false });
         try {
-            const response = await axios.post('http://localhost:8080/notifications/elderly/report', {
+            const response = await axios.post('${apiUrl}/notifications/elderly/report', {
                 serviceRequestId: this.state.info.notification.id,
                 reportDescription: this.state.reportValue
             });

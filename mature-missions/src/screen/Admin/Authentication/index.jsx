@@ -10,6 +10,8 @@ import Hide from '../../../images/hide.png';
 import Visible from '../../../images/visible.png'; 
 import { useNavigate } from "react-router-dom"; 
 import axios from 'axios'; 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 
 function AdminLogin() {
     // State variables for password visibility and password input type
@@ -41,13 +43,13 @@ function AdminLogin() {
 
         try {
             // Make a POST request to validate admin login credentials
-            const response = await axios.post('http://localhost:8080/login', {
+            const response = await axios.post('${apiUrl}/login', {
                 username,
                 password,
             });
 
             // Retrieve user data based on the received response
-            const response1 = await axios.get('http://localhost:8080/getUserById', {
+            const response1 = await axios.get('${apiUrl}/getUserById', {
                 params: {
                     userId: response.data.userId
                 },

@@ -10,6 +10,8 @@ import Lock from "../../images/lock.png";
 import { useSubscription } from '../../SubscriptionContext';
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Payment = () => {
     const [userRole, setUserRole] = useState(localStorage.getItem('userRole'));
     const { selectedPackage, secrets } = useSubscription();
@@ -36,7 +38,7 @@ const Payment = () => {
     const initiatePayment = async () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
         try {
-            const response = await axios.post("http://localhost:8080/checkout", {
+            const response = await axios.post("${apiUrl}/checkout", {
                 userId: localStorage.getItem('userId'),
                 items: [items],
                 name: name,

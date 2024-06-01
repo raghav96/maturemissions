@@ -7,6 +7,8 @@ import React, { Component } from "react";
 import "./index.css";
 import axios from "axios";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 class ViewPayments extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +20,7 @@ class ViewPayments extends Component {
     // Fetch payments data from the server when the component is mounted.
     async componentDidMount() {
         try {
-            const response = await axios.get('http://localhost:8080/admin/payment', {
+            const response = await axios.get('${apiUrl}/admin/payment', {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
@@ -55,7 +57,7 @@ class ViewPayments extends Component {
         // This conditional is accessed only when status is active (if payment is not made to the provider).
         if (status === 'Active') {
             try {
-                const response = await axios.post('http://localhost:8080/admin/send-payment', {
+                const response = await axios.post('${apiUrl}/admin/send-payment', {
                     paymentId: paymentId,
                     userId: userId,
                 } ,{

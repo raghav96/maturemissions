@@ -9,6 +9,9 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
+const apiUrl = process.env.REACT_APP_API_URL;
+
 /**
  * Functional component for managing user subscriptions and cancellation.
  */
@@ -27,7 +30,7 @@ function ActiveSubscription() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/view-subscription', {
+                const response = await axios.get('${apiUrl}/view-subscription', {
                     params: {
                         userId: localStorage.getItem("userId"),
                     },
@@ -68,7 +71,7 @@ function ActiveSubscription() {
      */
     const cancelSubscription = async () => {
         try {
-            await axios.post('http://localhost:8080/cancel-subscription', {
+            await axios.post('${apiUrl}/cancel-subscription', {
                 userId: localStorage.getItem("userId"),
                 subscriptionId: subscriptionId, // I need a valid subscription Id.
             }, {

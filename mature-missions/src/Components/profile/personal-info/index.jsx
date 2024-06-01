@@ -7,6 +7,9 @@ import { Component } from "react";
 import "./index.css"
 import axios from 'axios';
 
+
+const apiUrl = process.env.REACT_APP_API_URL;
+
 class PersonalInformation extends Component {
 
     constructor(props) {
@@ -28,7 +31,7 @@ class PersonalInformation extends Component {
     async componentDidMount() {
         const { userRole } = this.state;
         try {
-            const response = await axios.get('http://localhost:8080/getUserById', {
+            const response = await axios.get('${apiUrl}/getUserById', {
                 params: {
                     userId: localStorage.getItem("userId"),
                 },
@@ -134,7 +137,7 @@ class PersonalInformation extends Component {
         const { user_data, userRole } = this.state;
         try {
             if (userRole === 'ROLE_PROVIDER' && this.verifyEmail() && this.verifyNumber() && this.verifyAge() && this.verifyLength()) {
-                await axios.post('http://localhost:8080/user/change-details', {
+                await axios.post('${apiUrl}/user/change-details', {
                     userId: localStorage.getItem("userId"),
                     name: user_data[0].value,
                     username: user_data[1].value,
@@ -150,7 +153,7 @@ class PersonalInformation extends Component {
                 alert("Changes are saved.");
                 window.location.reload();
             } else if (userRole === 'ROLE_USER' && this.verifyMedicare() && this.verifyEmail() && this.verifyNumber() && this.verifyAge() && this.verifyLength()) {
-                await axios.post('http://localhost:8080/user/change-details', {
+                await axios.post('${apiUrl}/user/change-details', {
                     userId: localStorage.getItem("userId"),
                     name: user_data[0].value,
                     username: user_data[1].value,

@@ -11,6 +11,8 @@ import NotifyElderly from '../../Components/notify-elderly';
 import NotifyCaregiver from '../../Components/notify-caregiver';
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 class Notifications extends Component {
 
     constructor(props) {
@@ -40,14 +42,14 @@ class Notifications extends Component {
 
     loadCaregiverData = async () => {
         try {
-            const providerDetails = await axios.get('http://localhost:8080/getUserById', {
+            const providerDetails = await axios.get('${apiUrl}/getUserById', {
                 params: {
                     userId: localStorage.getItem("userId"),
                 }
             });
 
             const providerId = providerDetails.data.providerId;
-            const response = await axios.get('http://localhost:8080/notifications/caregiver/request');
+            const response = await axios.get('${apiUrl}/notifications/caregiver/request');
             const filtered_notifications = response.data.serviceRequestsList.filter(request => request.status === "accepted");
             const matchingIdNotifications = [];
             for(var i = 0; i < filtered_notifications.length; i++) {
@@ -72,7 +74,7 @@ class Notifications extends Component {
     loadElderlyData = async () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
         try {
-            const response = await axios.get('http://localhost:8080/notifications/elderly/requests', {
+            const response = await axios.get('${apiUrl}/notifications/elderly/requests', {
                 params: {
                     userId: localStorage.getItem("userId"),
                 }

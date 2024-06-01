@@ -5,6 +5,8 @@
 import React, { Component } from 'react';
 import "./index.css";
 import axios from "axios";
+const apiUrl = process.env.REACT_APP_API_URL;
+
 
 class Address extends Component {
     constructor(props) {
@@ -33,7 +35,7 @@ class Address extends Component {
      */
     async componentDidMount() {
         try {
-            const response = await axios.get('http://localhost:8080/getUserById', {
+            const response = await axios.get('${apiUrl}/getUserById', {
                 params: {
                     userId: localStorage.getItem("userId"),
                 },
@@ -121,7 +123,7 @@ class Address extends Component {
             if (this.verifyStreet() && this.verifyZip()) {
                 const newAddress = street + ", " + city + ", " + selectedState + ", " + zip;
                 try {
-                    await axios.post('http://localhost:8080/user/change-details', {
+                    await axios.post('${apiUrl}/user/change-details', {
                         userId: localStorage.getItem("userId"),
                         address: newAddress,
                         type: "ADDRESS",

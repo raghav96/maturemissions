@@ -7,6 +7,9 @@ import { Component } from "react";
 import "./index.css"
 import axios from 'axios';
 
+
+const apiUrl = process.env.REACT_APP_API_URL;
+
 class MedicalInformation extends Component {
 
     constructor(props) {
@@ -33,7 +36,7 @@ class MedicalInformation extends Component {
     // Gets and sets all the medical information about the user by using their user id.
     async componentDidMount() {
         try {
-            const response = await axios.get('http://localhost:8080/getUserById', {
+            const response = await axios.get('${apiUrl}/getUserById', {
                 params: {
                     userId: localStorage.getItem("userId"),
                 }, 
@@ -47,7 +50,7 @@ class MedicalInformation extends Component {
         }
         
         try {
-            const response = await axios.get('http://localhost:8080/medical-info', {
+            const response = await axios.get('${apiUrl}/medical-info', {
                 params: {
                     userId: localStorage.getItem("userId"),
                 }, 
@@ -127,7 +130,7 @@ class MedicalInformation extends Component {
         if (this.verifyNumber() && this.verifyDoctorNumber() && this.verifyLength()) {
             const { medicareNumber, medicalData } = this.state;
             try {
-                await axios.post('http://localhost:8080/add-medical-info', {
+                await axios.post('${apiUrl}/add-medical-info', {
                     userId: localStorage.getItem("userId"),
                     contactName: medicalData[0].value,
                     relationship: medicalData[1].value,

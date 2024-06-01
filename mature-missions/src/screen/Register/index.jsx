@@ -12,6 +12,8 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function Register(props) {
 
     const [userType, setUserType] = useState('Elderly');
@@ -155,7 +157,7 @@ function Register(props) {
 
             try {
                 if(userType === 'Elderly' && verifyUserDetails()) {
-                    await axios.post('http://localhost:8080/signup-user', {
+                    await axios.post('${apiUrl}/signup-user', {
                         name: name,
                         username: username,
                         phoneNumber: phonenumber,
@@ -167,7 +169,7 @@ function Register(props) {
                     });
                     navigate("/login");
                 } else if(userType === 'Caregiver' && verifyProviderDetails()) {
-                    await axios.post('http://localhost:8080/signup-provider', {
+                    await axios.post('${apiUrl}/signup-provider', {
                         name: name,
                         username: username,
                         phoneNumber: phonenumber,

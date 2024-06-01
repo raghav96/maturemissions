@@ -10,6 +10,8 @@ import Button from 'react-bootstrap/Button';
 import BookingCalander from '../calander'; 
 import BookingTime from '../clock'; 
 import axios from 'axios'; 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 
 class ServiceBooking extends Component {
     constructor(props) {
@@ -84,7 +86,7 @@ class ServiceBooking extends Component {
     handleConfirm = async () => {
         try {
             // Retrieve user subscription data
-            const response = await axios.get('http://localhost:8080/view-subscription', {
+            const response = await axios.get('${apiUrl}/view-subscription', {
                 params: {
                     userId: localStorage.getItem("userId"),
                 },
@@ -114,7 +116,7 @@ class ServiceBooking extends Component {
                     const formattedDateTime = `${formattedDate}T${formattedTime}+11:00`;
 
                 // Make a POST request to change user details (status) on the server
-                axios.post('http://localhost:8080/check-subscription', {
+                axios.post('${apiUrl}/check-subscription', {
                     userId: localStorage.getItem("userId"),
                     date: formattedDate, // Toggle user status
                 }, {
@@ -129,7 +131,7 @@ class ServiceBooking extends Component {
                         console.log("Service request limit not exceeded");
                         // Check if selected date is not an Australian holiday, then make the booking request
                         if (!this.isAustralianHoliday()) {
-                            axios.post('http://localhost:8080/book-service', {
+                            axios.post('${apiUrl}/book-service', {
                                 userId: userId,
                                 serviceId: serviceId,
                                 date: formattedDate,

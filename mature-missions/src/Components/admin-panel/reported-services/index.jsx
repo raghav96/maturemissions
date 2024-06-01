@@ -8,6 +8,9 @@ import "./index.css";
 import axios from "axios"; 
 import { sendNotifications } from "../../notification-sender/notification-sender.jsx"; 
 
+
+const apiUrl = process.env.REACT_APP_API_URL;
+
 class ReportedServices extends Component {
     constructor(props) {
         super(props);
@@ -20,7 +23,7 @@ class ReportedServices extends Component {
     async componentDidMount() {
         try {
             // Make a GET request to fetch reported service data from the server
-            const response = await axios.get('http://localhost:8080/admin/reported-user', {
+            const response = await axios.get('${apiUrl}/admin/reported-user', {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}` // Include authorization token in the request header
                 }
@@ -57,7 +60,7 @@ class ReportedServices extends Component {
     notifyProvider = async (status, requestId, provider) => {        
         try {
             // Make a PUT request to notify the provider and update service request status
-            await axios.put('http://localhost:8080/notifications/elderly/cancel-request', {
+            await axios.put('${apiUrl}/notifications/elderly/cancel-request', {
                 serviceRequestId: requestId,
             }, {
                 headers: {

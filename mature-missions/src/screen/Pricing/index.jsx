@@ -12,6 +12,8 @@ import { useNavigate } from 'react-router-dom';
 import { useSubscription } from '../../SubscriptionContext';
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Pricing = (props) => {
     const { setSelectedPackage } = useSubscription();
     const [currentSubscriptionType, setCurrentSubscriptionType] = useState(null);
@@ -27,7 +29,7 @@ const Pricing = (props) => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get('http://localhost:8080/view-subscription', {
+            const response = await axios.get('${apiUrl}/view-subscription', {
                 params: {
                     userId: localStorage.getItem("userId"),
                 },

@@ -7,6 +7,9 @@ import React, { Component } from "react";
 import "./index.css";
 import axios from "axios";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
+
 class ViewServiceRequests extends Component {
 
     constructor(props) {
@@ -19,7 +22,7 @@ class ViewServiceRequests extends Component {
     // Fetches service requests data from the server
     async componentDidMount() {
         try {
-            const response = await axios.get('http://localhost:8080/admin/service-requests', {
+            const response = await axios.get('${apiUrl}/admin/service-requests', {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
@@ -50,7 +53,7 @@ class ViewServiceRequests extends Component {
     // Handles deleting a service request
     deleteRequest = async (requestId) => {        
         try {
-            await axios.put('http://localhost:8080/notifications/elderly/cancel-request', {
+            await axios.put('${apiUrl}/notifications/elderly/cancel-request', {
                 serviceRequestId: requestId,
             }, {
                 headers: {

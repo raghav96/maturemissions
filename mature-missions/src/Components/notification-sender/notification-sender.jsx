@@ -5,6 +5,8 @@
 
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 // Function to send notifications to a user via email and/or SMS
 export function sendNotifications(user, subject, message) {
   // Setting authorization token from local storage for API requests
@@ -12,7 +14,7 @@ export function sendNotifications(user, subject, message) {
 
   // Sending email notification if user has email notifications enabled
   if (user.emailNotifications != null && user.emailNotifications) {
-    axios.post('http://localhost:8080/send-email', {
+    axios.post('${apiUrl}/send-email', {
         userId: user.id,
         subject: subject,
         message: message
@@ -27,7 +29,7 @@ export function sendNotifications(user, subject, message) {
 
   // Sending SMS notification if user has SMS notifications enabled
   if (user.smsNotifications != null && user.smsNotifications) {
-    axios.post('http://localhost:8080/send-sms', {
+    axios.post('${apiUrl}/send-sms', {
         userId: user.id,
         message: message
     })

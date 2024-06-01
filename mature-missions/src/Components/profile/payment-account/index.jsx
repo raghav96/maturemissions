@@ -7,6 +7,9 @@ import React, { Component } from "react";
 import "./index.css";
 import axios from "axios";
 
+
+const apiUrl = process.env.REACT_APP_API_URL;
+
 class PaymentAccount extends Component {
     
     constructor(props) {
@@ -29,7 +32,7 @@ class PaymentAccount extends Component {
      */
     getAccount = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/caregiver/account', {
+            const response = await axios.post('${apiUrl}/caregiver/account', {
                 providerId: localStorage.getItem("providerId"),
                 userId: localStorage.getItem("userId")
             }, {
@@ -50,7 +53,7 @@ class PaymentAccount extends Component {
      */
     setupAccount = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/caregiver/create-account', {
+            const response = await axios.post('${apiUrl}/caregiver/create-account', {
                 providerId: localStorage.getItem("providerId"),
                 userId: localStorage.getItem("userId")
             }, {

@@ -9,6 +9,9 @@ import axios from "axios";
 import "../../notification-sender/notification-sender.jsx"; 
 import { sendNotifications } from "../../notification-sender/notification-sender.jsx"; 
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
+
 class ManageUsers extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +24,7 @@ class ManageUsers extends Component {
     async componentDidMount() {
         try {
             // Make a GET request to fetch user data from the server
-            const response = await axios.get('http://localhost:8080/admin/users', {
+            const response = await axios.get('${apiUrl}/admin/users', {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}` // Include authorization token in the request header
                 }
@@ -55,7 +58,7 @@ class ManageUsers extends Component {
     deleteUser = async (index, active, user) => {  
         try {
             // Make a POST request to change user details (status) on the server
-            await axios.post('http://localhost:8080/user/change-details', {
+            await axios.post('${apiUrl}/user/change-details', {
                 userId: user.id,
                 active: !active, // Toggle user status
                 type: "STATUS"

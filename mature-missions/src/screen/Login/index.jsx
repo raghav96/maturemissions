@@ -13,6 +13,8 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function Login(props) {
 
     localStorage.clear();
@@ -25,12 +27,12 @@ function Login(props) {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/login', {
+            const response = await axios.post('${apiUrl}/login', {
                 username,
                 password,
             });
     
-            const response1 = await axios.get('http://localhost:8080/getUserById', {
+            const response1 = await axios.get('${apiUrl}/getUserById', {
                 params: {
                     userId: response.data.userId
                 },

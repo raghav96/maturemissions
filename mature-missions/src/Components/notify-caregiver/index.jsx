@@ -8,6 +8,8 @@ import { NavLink } from 'react-router-dom';
 import "./index.css";
 import axios from "axios";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 class NotifyCaregiver extends Component {
     constructor(props) {
         super(props);
@@ -29,7 +31,7 @@ class NotifyCaregiver extends Component {
     acceptRequest = async () => {
         try {
             // Get provider details
-            const providerDetails = await axios.get('http://localhost:8080/getUserById', {
+            const providerDetails = await axios.get('${apiUrl}/getUserById', {
                 params: {
                     userId: localStorage.getItem("userId"),
                 }
@@ -37,7 +39,7 @@ class NotifyCaregiver extends Component {
             const providerId = providerDetails.data.providerId;
 
             // Send notification to backend indicating the request is accepted
-            await axios.post('http://localhost:8080/notifications/caregiver/request', {
+            await axios.post('${apiUrl}/notifications/caregiver/request', {
                 serviceRequestId : this.state.info.notification.id,
                 providerId : providerId,
                 accepted : true
@@ -58,7 +60,7 @@ class NotifyCaregiver extends Component {
     cancelRequest = async () => {
         try {
             // Get provider details
-            const providerDetails = await axios.get('http://localhost:8080/getUserById', {
+            const providerDetails = await axios.get('${apiUrl}/getUserById', {
                 params: {
                     userId: localStorage.getItem("userId"),
                 }
@@ -66,7 +68,7 @@ class NotifyCaregiver extends Component {
             const providerId = providerDetails.data.providerId;
 
             // Send notification to backend indicating the request is canceled
-            await axios.post('http://localhost:8080/notifications/caregiver/request', {
+            await axios.post('${apiUrl}/notifications/caregiver/request', {
                 serviceRequestId : this.state.info.notification.id,
                 providerId : providerId,
                 accepted : false

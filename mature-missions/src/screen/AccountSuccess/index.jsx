@@ -9,6 +9,8 @@ import "./index.css";
 import Header from '../../Components/header'; 
 import Footer from '../../Components/footer';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 class AccountSuccess extends Component {
 
     constructor(props) {
@@ -27,7 +29,7 @@ class AccountSuccess extends Component {
     getAccount = async () => {
         try {
             // Make a POST request to fetch account data from the server
-            await axios.post('http://localhost:8080/caregiver/account', {
+            await axios.post('${apiUrl}/caregiver/account', {
                 providerId: localStorage.getItem("providerId"),
                 userId: localStorage.getItem("userId")
             }, {

@@ -6,6 +6,7 @@
 import React, { Component } from "react";
 import "./index.css";
 import axios from "axios";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 class ToggleNotifications extends Component {
 
@@ -22,7 +23,7 @@ class ToggleNotifications extends Component {
      */
     async componentDidMount() {
         try {
-            const response = await axios.get('http://localhost:8080/getUserById', {
+            const response = await axios.get('${apiUrl}/getUserById', {
                 params: {
                     userId: localStorage.getItem("userId"),
                 },
@@ -48,7 +49,7 @@ class ToggleNotifications extends Component {
             return { smsNotifications };
         }, async () => {
             try {
-                const response = await axios.post('http://localhost:8080/user/change-details', {
+                const response = await axios.post('${apiUrl}/user/change-details', {
                     userId: localStorage.getItem("userId"),
                     smsNotifications: this.state.smsNotifications,
                     type: "SMS"
@@ -75,7 +76,7 @@ class ToggleNotifications extends Component {
             return { emailNotifications };
         }, async () => {
             try {
-                const response = await axios.post('http://localhost:8080/user/change-details', {
+                const response = await axios.post('${apiUrl}/user/change-details', {
                     userId: localStorage.getItem("userId"),
                     emailNotifications: this.state.emailNotifications,
                     type: "EMAIL"
