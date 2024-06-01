@@ -150,14 +150,14 @@ function Register(props) {
         } else if (!checkTermsAndConditions()) {
             alert("Please check the Terms and Conditions before signing up.");
         } else {
-            setPhoneNumber(parseInt(phonenumber), 10);
-            setMedicare(parseInt(medicare), 10);
+            setPhoneNumber(parseInt(phonenumber, 10));
+            setMedicare(parseInt(medicare, 10));
 
-            let fullAddress = street + ", " + city + ", " + state + ", " + zip;
+            let fullAddress = `${street}, ${city}, ${state}, ${zip}`;
 
             try {
                 if(userType === 'Elderly' && verifyUserDetails()) {
-                    await axios.post('${apiUrl}/signup-user', {
+                    await axios.post(`${apiUrl}/signup-user`, {
                         name: name,
                         username: username,
                         phoneNumber: phonenumber,
@@ -169,7 +169,7 @@ function Register(props) {
                     });
                     navigate("/login");
                 } else if(userType === 'Caregiver' && verifyProviderDetails()) {
-                    await axios.post('${apiUrl}/signup-provider', {
+                    await axios.post(`${apiUrl}/signup-provider`, {
                         name: name,
                         username: username,
                         phoneNumber: phonenumber,

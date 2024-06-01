@@ -27,12 +27,12 @@ function Login(props) {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('${apiUrl}/login', {
+            const response = await axios.post(`${apiUrl}/login`, {
                 username,
                 password,
             });
     
-            const response1 = await axios.get('${apiUrl}/getUserById', {
+            const response1 = await axios.get(`${apiUrl}/getUserById`, {
                 params: {
                     userId: response.data.userId
                 },
@@ -136,5 +136,3 @@ function Login(props) {
 }
 
 export default Login;
-
-

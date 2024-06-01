@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios'; 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-
 function AdminLogin() {
     // State variables for password visibility and password input type
     const [isPwdVisible, setIsPwdVisible] = useState(false);
@@ -43,13 +42,13 @@ function AdminLogin() {
 
         try {
             // Make a POST request to validate admin login credentials
-            const response = await axios.post('${apiUrl}/login', {
+            const response = await axios.post(`${apiUrl}/login`, {
                 username,
                 password,
             });
 
             // Retrieve user data based on the received response
-            const response1 = await axios.get('${apiUrl}/getUserById', {
+            const response1 = await axios.get(`${apiUrl}/getUserById`, {
                 params: {
                     userId: response.data.userId
                 },
@@ -87,7 +86,7 @@ function AdminLogin() {
     return (
         <div className="admin-login-container">
             <div className="admin-login-left">
-                <p>Welcome to<br></br>Mature Missions</p>
+                <p>Welcome to<br/>Mature Missions</p>
             </div>
             <div className="admin-login-right">
                 <div className="admin-login-title" id="admin-components">

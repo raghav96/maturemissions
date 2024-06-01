@@ -29,7 +29,7 @@ class AccountSuccess extends Component {
     getAccount = async () => {
         try {
             // Make a POST request to fetch account data from the server
-            await axios.post('${apiUrl}/caregiver/account', {
+            await axios.post(`${apiUrl}/caregiver/account`, {
                 providerId: localStorage.getItem("providerId"),
                 userId: localStorage.getItem("userId")
             }, {
@@ -48,11 +48,11 @@ class AccountSuccess extends Component {
     renderHeader(userRole) {
         switch (userRole) {
             case 'ROLE_USER':
-                return <Header type={"elderly"} loggedIn={true} elder={true} />;
+                return <Header type="elderly" loggedIn={true} elder={true} />;
             case 'ROLE_PROVIDER':
-                return <Header type={"caregiver"} loggedIn={true} elder={false} />;
+                return <Header type="caregiver" loggedIn={true} elder={false} />;
             default:
-                return <Header type={"guest"} loggedIn={false} elder={false} />;
+                return <Header type="guest" loggedIn={false} elder={false} />;
         }
     }
 

@@ -42,17 +42,17 @@ class Notifications extends Component {
 
     loadCaregiverData = async () => {
         try {
-            const providerDetails = await axios.get('${apiUrl}/getUserById', {
+            const providerDetails = await axios.get(`${apiUrl}/getUserById`, {
                 params: {
                     userId: localStorage.getItem("userId"),
                 }
             });
 
             const providerId = providerDetails.data.providerId;
-            const response = await axios.get('${apiUrl}/notifications/caregiver/request');
+            const response = await axios.get(`${apiUrl}/notifications/caregiver/request`);
             const filtered_notifications = response.data.serviceRequestsList.filter(request => request.status === "accepted");
             const matchingIdNotifications = [];
-            for(var i = 0; i < filtered_notifications.length; i++) {
+            for(let i = 0; i < filtered_notifications.length; i++) {
                 if(filtered_notifications[i].provider.id.toString() === providerId.toString()) {
                     matchingIdNotifications.push(filtered_notifications[i]);
                 }
@@ -74,7 +74,7 @@ class Notifications extends Component {
     loadElderlyData = async () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
         try {
-            const response = await axios.get('${apiUrl}/notifications/elderly/requests', {
+            const response = await axios.get(`${apiUrl}/notifications/elderly/requests`, {
                 params: {
                     userId: localStorage.getItem("userId"),
                 }
@@ -91,7 +91,7 @@ class Notifications extends Component {
             this.setState({filtered_caregiver_notifications: this.state.caregiver_notifications});
         } else {
             const relevantServices = [];
-            for(var i = 0; i < this.state.caregiver_notifications.length; i++) {
+            for(let i = 0; i < this.state.caregiver_notifications.length; i++) {
                 if(this.state.caregiver_notifications[i].service.id === number) {
                     relevantServices.push(this.state.caregiver_notifications[i]);
                 }
@@ -106,7 +106,7 @@ class Notifications extends Component {
             this.setState({filtered_open_caregiver_notifications: this.state.open_caregiver_notifications});
         } else {
             const relevantServices = [];
-            for(var i = 0; i < this.state.open_caregiver_notifications.length; i++) {
+            for(let i = 0; i < this.state.open_caregiver_notifications.length; i++) {
                 if(this.state.open_caregiver_notifications[i].service.id === number) {
                     relevantServices.push(this.state.open_caregiver_notifications[i]);
                 }
@@ -156,19 +156,19 @@ class Notifications extends Component {
                                 <span>{filtered_caregiver_notifications.length}</span>
                             </div>
                             <div className='caregiver-service-drop'>
-                                <button class="btn btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button className="btn btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <div id='menu-icon'></div>
                                     <div id='menu-icon'></div>
                                     <div id='menu-icon'></div>
                                 </button>
-                                <ul class="dropdown-menu">
-                                    <li><button onClick={() => this.filterAcceptedServices(0)} class="dropdown-item">All</button></li>
-                                    <li><button onClick={() => this.filterAcceptedServices(1)} class="dropdown-item">Care Assistance</button></li>
-                                    <li><button onClick={() => this.filterAcceptedServices(2)} class="dropdown-item">Meal Preparation</button></li>
-                                    <li><button onClick={() => this.filterAcceptedServices(3)} class="dropdown-item">Housekeeping</button></li>
-                                    <li><button onClick={() => this.filterAcceptedServices(4)} class="dropdown-item">Family Interaction</button></li>
-                                    <li><button onClick={() => this.filterAcceptedServices(5)} class="dropdown-item">Mobility Support</button></li>
-                                    <li><button onClick={() => this.filterAcceptedServices(6)} class="dropdown-item">Social Outgoings</button></li>
+                                <ul className="dropdown-menu">
+                                    <li><button onClick={() => this.filterAcceptedServices(0)} className="dropdown-item">All</button></li>
+                                    <li><button onClick={() => this.filterAcceptedServices(1)} className="dropdown-item">Care Assistance</button></li>
+                                    <li><button onClick={() => this.filterAcceptedServices(2)} className="dropdown-item">Meal Preparation</button></li>
+                                    <li><button onClick={() => this.filterAcceptedServices(3)} className="dropdown-item">Housekeeping</button></li>
+                                    <li><button onClick={() => this.filterAcceptedServices(4)} className="dropdown-item">Family Interaction</button></li>
+                                    <li><button onClick={() => this.filterAcceptedServices(5)} className="dropdown-item">Mobility Support</button></li>
+                                    <li><button onClick={() => this.filterAcceptedServices(6)} className="dropdown-item">Social Outgoings</button></li>
                                 </ul>
                             </div>
                         </div>
@@ -186,19 +186,19 @@ class Notifications extends Component {
                                 <span>{filtered_open_caregiver_notifications.length}</span>
                             </div>
                             <div className='caregiver-service-drop'>
-                                <button class="btn btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button className="btn btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <div id='menu-icon'></div>
                                     <div id='menu-icon'></div>
                                     <div id='menu-icon'></div>
                                 </button>
-                                <ul class="dropdown-menu">
-                                    <li><button onClick={() => this.filterOpenServices(0)} class="dropdown-item">All</button></li>
-                                    <li><button onClick={() => this.filterOpenServices(1)} class="dropdown-item">Care Assistance</button></li>
-                                    <li><button onClick={() => this.filterOpenServices(2)} class="dropdown-item">Meal Preparation</button></li>
-                                    <li><button onClick={() => this.filterOpenServices(3)} class="dropdown-item">Housekeeping</button></li>
-                                    <li><button onClick={() => this.filterOpenServices(4)} class="dropdown-item">Family Interaction</button></li>
-                                    <li><button onClick={() => this.filterOpenServices(5)} class="dropdown-item">Mobility Support</button></li>
-                                    <li><button onClick={() => this.filterOpenServices(6)} class="dropdown-item">Social Outgoings</button></li>
+                                <ul className="dropdown-menu">
+                                    <li><button onClick={() => this.filterOpenServices(0)} className="dropdown-item">All</button></li>
+                                    <li><button onClick={() => this.filterOpenServices(1)} className="dropdown-item">Care Assistance</button></li>
+                                    <li><button onClick={() => this.filterOpenServices(2)} className="dropdown-item">Meal Preparation</button></li>
+                                    <li><button onClick={() => this.filterOpenServices(3)} className="dropdown-item">Housekeeping</button></li>
+                                    <li><button onClick={() => this.filterOpenServices(4)} className="dropdown-item">Family Interaction</button></li>
+                                    <li><button onClick={() => this.filterOpenServices(5)} className="dropdown-item">Mobility Support</button></li>
+                                    <li><button onClick={() => this.filterOpenServices(6)} className="dropdown-item">Social Outgoings</button></li>
                                 </ul>
                             </div>
                         </div>

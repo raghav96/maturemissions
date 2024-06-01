@@ -18,7 +18,7 @@ const Pricing = (props) => {
     const { setSelectedPackage } = useSubscription();
     const [currentSubscriptionType, setCurrentSubscriptionType] = useState(null);
     
-    const packageExists = localStorage.getItem('userId') == null ? false : true;
+    const packageExists = localStorage.getItem('userId') !== null;
     const packages = [
         currentSubscriptionType === 'Bronze',
         currentSubscriptionType === 'Silver',
@@ -29,7 +29,7 @@ const Pricing = (props) => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get('${apiUrl}/view-subscription', {
+            const response = await axios.get(`${apiUrl}/view-subscription`, {
                 params: {
                     userId: localStorage.getItem("userId"),
                 },
@@ -40,7 +40,7 @@ const Pricing = (props) => {
 
             if (response.data.status === "Failed") {
                 alert(response.data.message);
-            } else  if (response.data.type !== "none") {
+            } else if (response.data.type !== "none") {
                 setCurrentSubscriptionType(response.data.type);
             }
 
@@ -68,30 +68,17 @@ const Pricing = (props) => {
 
     const bronzeSubscriptionSelected = () => {
         setSelectedPackage('bronze');
-        if (packageExists) {
-            navigate("/payment")
-        } else {
-            navigate("/register");
-        }
-        
+        navigate(packageExists ? "/payment" : "/register");
     }
 
     const silverSubscriptionSelected = () => {
         setSelectedPackage('silver');
-        if (packageExists) {
-            navigate("/payment")
-        } else {
-            navigate("/register");
-        }
+        navigate(packageExists ? "/payment" : "/register");
     }
 
     const goldSubscriptionSelected = () => {
         setSelectedPackage('gold');
-        if (packageExists) {
-            navigate("/payment")
-        } else {
-            navigate("/register");
-        }
+        navigate(packageExists ? "/payment" : "/register");
     }
 
     return (
@@ -120,7 +107,7 @@ const Pricing = (props) => {
                             </ul>
                         </div>
                         <div className='bottom-half'>
-                            {packages[0] === true ? (
+                            {packages[0] ? (
                                 <button className='pricing-btn' id='bronze'>SELECTED PLAN</button>
                             ) : (
                                 <button className='pricing-btn' id='bronze' onClick={bronzeSubscriptionSelected}>CHOOSE PLAN</button>
@@ -148,7 +135,7 @@ const Pricing = (props) => {
                             </ul>
                         </div>
                         <div className='bottom-half'>
-                            {packages[1] === true ? (
+                            {packages[1] ? (
                                 <button className='pricing-btn' id='silver'>SELECTED PLAN</button>
                             ) : (
                                 <button className='pricing-btn' id='silver' onClick={silverSubscriptionSelected}>CHOOSE PLAN</button>
@@ -176,7 +163,7 @@ const Pricing = (props) => {
                             </ul>
                         </div>
                         <div className='bottom-half'>
-                            {packages[2] === true ? (
+                            {packages[2] ? (
                                 <button className='pricing-btn' id='gold'>SELECTED PLAN</button>
                             ) : (
                                 <button className='pricing-btn' id='gold' onClick={goldSubscriptionSelected}>CHOOSE PLAN</button>

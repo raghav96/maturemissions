@@ -16,20 +16,19 @@ const Payment = () => {
     const [userRole, setUserRole] = useState(localStorage.getItem('userRole'));
     const { selectedPackage, secrets } = useSubscription();
     const items = secrets[selectedPackage]; // Access the secret for the selected package
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
 
-    const date = new Date()
-    const aMonthFromNow = new Date(date.setMonth(date.getMonth()+8));
+    const date = new Date();
+    const aMonthFromNow = new Date(date.setMonth(date.getMonth() + 8));
 
     const onCustomerNameChange = (ev) => {
-        setName(ev.target.value)
-    }
+        setName(ev.target.value);
+    };
 
     const onCustomerEmailChange = (ev) => {
-        setEmail(ev.target.value)
-    }
-
+        setEmail(ev.target.value);
+    };
 
     useEffect(() => {
         setUserRole(localStorage.getItem('userRole'));
@@ -38,7 +37,7 @@ const Payment = () => {
     const initiatePayment = async () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
         try {
-            const response = await axios.post("${apiUrl}/checkout", {
+            const response = await axios.post(`${apiUrl}/checkout`, {
                 userId: localStorage.getItem('userId'),
                 items: [items],
                 name: name,
@@ -57,8 +56,7 @@ const Payment = () => {
         } catch (error) {
             alert('Error in making payment');
         }
-
-    }
+    };
 
     /**
      * Renders the appropriate header based on the user's role.
@@ -96,7 +94,7 @@ const Payment = () => {
                         <div className='chosen-plan-details'>
                             <div className='package-details'>{items.name}</div>
                             <div className='price-details'>{items.price}</div>
-                            <div className='dates-details'>{date.toDateString()} to {aMonthFromNow.toDateString()}</div>
+                            <div className='dates-details'>{`${date.toDateString()} to ${aMonthFromNow.toDateString()}`}</div>
                         </div>
                     </div>
 
@@ -104,20 +102,19 @@ const Payment = () => {
                         <div className='name-details'>
                             <div className='first-name-details'>
                                 <span className='first-name-title'>NAME <span className='asterisk-symbol'>*</span></span>
-                                <input className='first-name' variant='filled' placeholder='Customer Name' onChange={onCustomerNameChange} value={name}/>
+                                <input className='first-name' variant='filled' placeholder='Customer Name' onChange={onCustomerNameChange} value={name} />
                             </div>
                             <div className='last-name-details'>
                                 <span className='last-name-title'>EMAIL <span className='asterisk-symbol'>*</span></span>
-                                <input className='last-name' variant='filled' placeholder='Customer Email' onChange={onCustomerEmailChange} value={email}/>
+                                <input className='last-name' variant='filled' placeholder='Customer Email' onChange={onCustomerEmailChange} value={email} />
                             </div>
                         </div>
-                        <button className='pay-now-button' onClick={initiatePayment} ><img alt='' className='lock-symbol' src={Lock} ></img>Initiate Payment</button>
+                        <button className='pay-now-button' onClick={initiatePayment}><img alt='' className='lock-symbol' src={Lock} />Initiate Payment</button>
                     </div>
                 </div>
             </div>
         </div>
     );
 };
-
 
 export default Payment;
