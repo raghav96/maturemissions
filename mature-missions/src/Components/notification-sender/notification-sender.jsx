@@ -13,8 +13,8 @@ export function sendNotifications(user, subject, message) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
 
   // Sending email notification if user has email notifications enabled
-  if (user.emailNotifications != null && user.emailNotifications) {
-    axios.post('${apiUrl}/send-email', {
+  if (user.emailNotifications !== null && user.emailNotifications) {
+    axios.post(`${apiUrl}/send-email`, {
         userId: user.id,
         subject: subject,
         message: message
@@ -28,8 +28,8 @@ export function sendNotifications(user, subject, message) {
   }
 
   // Sending SMS notification if user has SMS notifications enabled
-  if (user.smsNotifications != null && user.smsNotifications) {
-    axios.post('${apiUrl}/send-sms', {
+  if (user.smsNotifications !== null && user.smsNotifications) {
+    axios.post(`${apiUrl}/send-sms`, {
         userId: user.id,
         message: message
     })

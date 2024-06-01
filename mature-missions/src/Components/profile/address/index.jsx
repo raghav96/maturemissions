@@ -7,7 +7,6 @@ import "./index.css";
 import axios from "axios";
 const apiUrl = process.env.REACT_APP_API_URL;
 
-
 class Address extends Component {
     constructor(props) {
         super(props);
@@ -35,7 +34,7 @@ class Address extends Component {
      */
     async componentDidMount() {
         try {
-            const response = await axios.get('${apiUrl}/getUserById', {
+            const response = await axios.get(`${apiUrl}/getUserById`, {
                 params: {
                     userId: localStorage.getItem("userId"),
                 },
@@ -44,13 +43,15 @@ class Address extends Component {
                 }
             });
             const splittedAddress = response.data.user.address.split(', ');
-            this.setState({ street: splittedAddress[0] });
-            this.setState({ city: splittedAddress[1] });
-            this.setState({ selectedState: splittedAddress[2] });
-            this.setState({ zip: splittedAddress[3] });            
+            this.setState({
+                street: splittedAddress[0],
+                city: splittedAddress[1],
+                selectedState: splittedAddress[2],
+                zip: splittedAddress[3]
+            });
         } catch (error) {
             console.log('Error fetching data: ', error);
-        }        
+        }
     }
 
     /**
@@ -88,28 +89,28 @@ class Address extends Component {
     /**
      * Updates the selected state in the component state.
      */
-    saveState  = (event) => {
+    saveState = (event) => {
         this.setState({ selectedState: event.target.value });
     }
 
     /**
      * Updates the ZIP/Postcode in the component state.
      */
-    saveZip  = (event) => {
+    saveZip = (event) => {
         this.setState({ zip: event.target.value });
     }
 
     /**
      * Updates the city name in the component state.
      */
-    saveCity  = (event) => {
+    saveCity = (event) => {
         this.setState({ city: event.target.value });
     }
 
     /**
      * Updates the street address in the component state.
      */
-    saveStreet  = (event) => {
+    saveStreet = (event) => {
         this.setState({ street: event.target.value });
     }
 
@@ -121,9 +122,9 @@ class Address extends Component {
 
         if (this.verifyLength()) {
             if (this.verifyStreet() && this.verifyZip()) {
-                const newAddress = street + ", " + city + ", " + selectedState + ", " + zip;
+                const newAddress = `${street}, ${city}, ${selectedState}, ${zip}`;
                 try {
-                    await axios.post('${apiUrl}/user/change-details', {
+                    await axios.post(`${apiUrl}/user/change-details`, {
                         userId: localStorage.getItem("userId"),
                         address: newAddress,
                         type: "ADDRESS",
@@ -150,12 +151,12 @@ class Address extends Component {
                 <div className="address-info-subcontainer">
                     <div className="address-info-content">
                         <label>Street Address:</label>
-                        <input type="string" placeholder="Enter street address" onChange={this.saveStreet} value={this.state.street}></input>
+                        <input type="text" placeholder="Enter street address" onChange={this.saveStreet} value={this.state.street}></input>
                     </div>
                     <div className="address-info-content">
                         <label>State:</label>
                         <select value={this.state.selectedState} onChange={this.saveState}>
-                            <option value="" disabled selected>Select a state</option>
+                            <option value="" disabled>Select a state</option>
                             {this.state.australianStates.map((state, index) => (
                                 <option key={index} value={state}>
                                     {state}
@@ -165,7 +166,7 @@ class Address extends Component {
                     </div>
                     <div className="address-info-content">
                         <label>City:</label>
-                        <input type="string" placeholder="Enter city name" onChange={this.saveCity} value={this.state.city}></input>
+                        <input type="text" placeholder="Enter city name" onChange={this.saveCity} value={this.state.city}></input>
                     </div>
                     <div className="address-info-content">
                         <label>ZIP/Postcode:</label>

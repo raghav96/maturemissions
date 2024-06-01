@@ -12,7 +12,6 @@ import BookingTime from '../clock';
 import axios from 'axios'; 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-
 class ServiceBooking extends Component {
     constructor(props) {
         super(props);
@@ -86,7 +85,7 @@ class ServiceBooking extends Component {
     handleConfirm = async () => {
         try {
             // Retrieve user subscription data
-            const response = await axios.get('${apiUrl}/view-subscription', {
+            const response = await axios.get(`${apiUrl}/view-subscription`, {
                 params: {
                     userId: localStorage.getItem("userId"),
                 },
@@ -115,52 +114,50 @@ class ServiceBooking extends Component {
                     const formattedTime = time + ":00.000";
                     const formattedDateTime = `${formattedDate}T${formattedTime}+11:00`;
 
-                // Make a POST request to change user details (status) on the server
-                axios.post('${apiUrl}/check-subscription', {
-                    userId: localStorage.getItem("userId"),
-                    date: formattedDate, // Toggle user status
-                }, {
-                    headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('token')}` // Include authorization token in the request header
-                    }
-                }).then((response) => {
-                    console.log(response);
-                    if (response.data === false) {
-                        alert("Service Request Limit Exceeded");
-                    } else {
-                        console.log("Service request limit not exceeded");
-                        // Check if selected date is not an Australian holiday, then make the booking request
-                        if (!this.isAustralianHoliday()) {
-                            axios.post('${apiUrl}/book-service', {
-                                userId: userId,
-                                serviceId: serviceId,
-                                date: formattedDate,
-                                times: formattedDateTime,
-                            }, {
-                                headers: {
-                                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                                }
-                            })
-                            .then((response) => {
-                                this.handleCloseConfirm();
-                                alert('Service request placed successfully! Head over to Notifications to view requested services.');
-                            })
-                            .catch((error) => {
-                                if (error.response) {
-                                    console.error(error);
-                                }
-                            });
+                    // Make a POST request to change user details (status) on the server
+                    axios.post(`${apiUrl}/check-subscription`, {
+                        userId: localStorage.getItem("userId"),
+                        date: formattedDate, // Toggle user status
+                    }, {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem('token')}` // Include authorization token in the request header
                         }
-                    }
-                }).catch((error) => {
-                    if (error.response) {
-                        console.error(error);
-                    }
-                });
-
-                
-            }}
-
+                    }).then((response) => {
+                        console.log(response);
+                        if (response.data === false) {
+                            alert("Service Request Limit Exceeded");
+                        } else {
+                            console.log("Service request limit not exceeded");
+                            // Check if selected date is not an Australian holiday, then make the booking request
+                            if (!this.isAustralianHoliday()) {
+                                axios.post(`${apiUrl}/book-service`, {
+                                    userId: userId,
+                                    serviceId: serviceId,
+                                    date: formattedDate,
+                                    times: formattedDateTime,
+                                }, {
+                                    headers: {
+                                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                                    }
+                                })
+                                .then((response) => {
+                                    this.handleCloseConfirm();
+                                    alert('Service request placed successfully! Head over to Notifications to view requested services.');
+                                })
+                                .catch((error) => {
+                                    if (error.response) {
+                                        console.error(error);
+                                    }
+                                });
+                            }
+                        }
+                    }).catch((error) => {
+                        if (error.response) {
+                            console.error(error);
+                        }
+                    });
+                }
+            }
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -229,9 +226,7 @@ class ServiceBooking extends Component {
                 </Modal>
             </div>
         );
-
     }
-    
 }
 
 export default ServiceBooking;

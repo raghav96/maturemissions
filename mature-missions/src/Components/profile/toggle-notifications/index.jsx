@@ -23,7 +23,7 @@ class ToggleNotifications extends Component {
      */
     async componentDidMount() {
         try {
-            const response = await axios.get('${apiUrl}/getUserById', {
+            const response = await axios.get(`${apiUrl}/getUserById`, {
                 params: {
                     userId: localStorage.getItem("userId"),
                 },
@@ -31,8 +31,10 @@ class ToggleNotifications extends Component {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             });
-            this.setState({ emailNotifications: response.data.user.emailNotifications });
-            this.setState({ smsNotifications: response.data.user.smsNotifications });
+            this.setState({
+                emailNotifications: response.data.user.emailNotifications,
+                smsNotifications: response.data.user.smsNotifications
+            });
         } catch (error) {
             console.log('Error fetching data: ', error);
         }
@@ -49,7 +51,7 @@ class ToggleNotifications extends Component {
             return { smsNotifications };
         }, async () => {
             try {
-                const response = await axios.post('${apiUrl}/user/change-details', {
+                const response = await axios.post(`${apiUrl}/user/change-details`, {
                     userId: localStorage.getItem("userId"),
                     smsNotifications: this.state.smsNotifications,
                     type: "SMS"
@@ -76,7 +78,7 @@ class ToggleNotifications extends Component {
             return { emailNotifications };
         }, async () => {
             try {
-                const response = await axios.post('${apiUrl}/user/change-details', {
+                const response = await axios.post(`${apiUrl}/user/change-details`, {
                     userId: localStorage.getItem("userId"),
                     emailNotifications: this.state.emailNotifications,
                     type: "EMAIL"
@@ -100,11 +102,11 @@ class ToggleNotifications extends Component {
                 <div className="switch-container">
                     <div className="form-check form-switch">
                         <input className="form-check-input" type="checkbox" role="switch" id="smsNotification" onChange={this.toggleSmsNotifications} checked={this.state.smsNotifications}/>
-                        <label className="form-check-label" for="smsNotification">SMS Notifications</label>
+                        <label className="form-check-label" htmlFor="smsNotification">SMS Notifications</label>
                     </div>
                     <div className="form-check form-switch">
                         <input className="form-check-input" type="checkbox" role="switch" id="emailNotification" onChange={this.toggleEmailNotifications} checked={this.state.emailNotifications}/>
-                        <label className="form-check-label" for="emailNotification">Email Notifications</label>
+                        <label className="form-check-label" htmlFor="emailNotification">Email Notifications</label>
                     </div>
                 </div>
                 
@@ -113,4 +115,4 @@ class ToggleNotifications extends Component {
     }
 }
 
-export default ToggleNotifications
+export default ToggleNotifications;

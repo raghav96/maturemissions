@@ -9,7 +9,6 @@ import axios from "axios";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-
 class ViewServiceRequests extends Component {
 
     constructor(props) {
@@ -22,7 +21,7 @@ class ViewServiceRequests extends Component {
     // Fetches service requests data from the server
     async componentDidMount() {
         try {
-            const response = await axios.get('${apiUrl}/admin/service-requests', {
+            const response = await axios.get(`${apiUrl}/admin/service-requests`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
@@ -31,14 +30,14 @@ class ViewServiceRequests extends Component {
             const service_requests = []
 
             // Filters and prepares service requests data for active users and non-complete status
-            for(let i = 0; i < response.data.serviceRequestsList.length; i++) {
+            for (let i = 0; i < response.data.serviceRequestsList.length; i++) {
                 if (response.data.serviceRequestsList[i].user.active && response.data.serviceRequestsList[i].status !== "complete") {
                     service_requests.push({
                         id: response.data.serviceRequestsList[i].id,
                         username: response.data.serviceRequestsList[i].user.username,
                         service: response.data.serviceRequestsList[i].service.name,
-                        dateAndTime: (response.data.serviceRequestsList[i].requestTime),
-                        status: (response.data.serviceRequestsList[i].status)
+                        dateAndTime: response.data.serviceRequestsList[i].requestTime,
+                        status: response.data.serviceRequestsList[i].status
                     });
                 }
             }
@@ -51,9 +50,9 @@ class ViewServiceRequests extends Component {
     }
 
     // Handles deleting a service request
-    deleteRequest = async (requestId) => {        
+    deleteRequest = async (requestId) => {
         try {
-            await axios.put('${apiUrl}/notifications/elderly/cancel-request', {
+            await axios.put(`${apiUrl}/notifications/elderly/cancel-request`, {
                 serviceRequestId: requestId,
             }, {
                 headers: {
@@ -66,13 +65,11 @@ class ViewServiceRequests extends Component {
         }
     };
 
-
     render() {
-
         return (
             <div className="view-service-request-table">
                 <span><p>View Service Requests</p></span>
-                <table className="table table-hover"> {/* Corrected className attribute */}
+                <table className="table table-hover">
                     <thead>
                         <tr>
                             <th>Service Request ID</th>
@@ -92,7 +89,7 @@ class ViewServiceRequests extends Component {
                                 <td>{item.dateAndTime}</td>
                                 <td>{item.status}</td>
                                 <td>
-                                    { item.status !== "complete" && <button className="btn btn-danger delete-button" onClick={() => this.deleteRequest(item.id)}>Delete Request</button> }
+                                    {item.status !== "complete" && <button className="btn btn-danger delete-button" onClick={() => this.deleteRequest(item.id)}>Delete Request</button>}
                                 </td>
                             </tr>
                         ))}

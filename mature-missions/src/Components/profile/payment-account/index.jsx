@@ -7,11 +7,9 @@ import React, { Component } from "react";
 import "./index.css";
 import axios from "axios";
 
-
 const apiUrl = process.env.REACT_APP_API_URL;
 
 class PaymentAccount extends Component {
-    
     constructor(props) {
         super(props);
         this.state = {
@@ -32,7 +30,7 @@ class PaymentAccount extends Component {
      */
     getAccount = async () => {
         try {
-            const response = await axios.post('${apiUrl}/caregiver/account', {
+            const response = await axios.post(`${apiUrl}/caregiver/account`, {
                 providerId: localStorage.getItem("providerId"),
                 userId: localStorage.getItem("userId")
             }, {
@@ -53,7 +51,7 @@ class PaymentAccount extends Component {
      */
     setupAccount = async () => {
         try {
-            const response = await axios.post('${apiUrl}/caregiver/create-account', {
+            const response = await axios.post(`${apiUrl}/caregiver/create-account`, {
                 providerId: localStorage.getItem("providerId"),
                 userId: localStorage.getItem("userId")
             }, {
@@ -76,12 +74,14 @@ class PaymentAccount extends Component {
                 <p className="payment-account-subheading">
                     Set up your Stripe account to receive payments
                 </p>
-                {this.state.stripeAccountId === undefined ? (
-                                <button className="save-changes-btn" onClick={this.setupAccount}>Setup Account</button>
-                            ) : <button className="save-changes-btn" >Account Setup Done</button>}
+                {this.state.stripeAccountId ? (
+                    <button className="save-changes-btn">Account Setup Done</button>
+                ) : (
+                    <button className="save-changes-btn" onClick={this.setupAccount}>Setup Account</button>
+                )}
             </div>
-        )
+        );
     }
 }
 
-export default PaymentAccount
+export default PaymentAccount;

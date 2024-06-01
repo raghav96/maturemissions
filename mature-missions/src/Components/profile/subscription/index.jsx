@@ -5,10 +5,8 @@
 
 import React, { useState, useEffect } from "react";
 import "./index.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -19,8 +17,8 @@ function ActiveSubscription() {
     const navigate = useNavigate();
 
     const [subscriptionId, setSubscriptionId] = useState(1);
-    const [type, setType] = useState('Silver');
-    const [price, setPrice] = useState('120');
+    const [type, setType] = useState("Silver");
+    const [price, setPrice] = useState("120");
     const [nextPaymentDate, setNextPaymentDate] = useState(new Date());
     const [subscriptionSelected, setValidSubscription] = useState(false);
 
@@ -30,13 +28,13 @@ function ActiveSubscription() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('${apiUrl}/view-subscription', {
+                const response = await axios.get(`${apiUrl}/view-subscription`, {
                     params: {
                         userId: localStorage.getItem("userId"),
                     },
                     headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`
-                    }
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
                 });
 
                 if (response.data.status === "Failed") {
@@ -49,7 +47,7 @@ function ActiveSubscription() {
                         const subscriptionId = response.data.subscription.subscriptionId;
                         const subscriptionPrice = response.data.subscription.price;
                         const nextPaymentDate = response.data.subscription.nextPaymentDate;
-    
+
                         setType(subscriptionType);
                         setPrice(subscriptionPrice);
                         setSubscriptionId(subscriptionId);
@@ -57,9 +55,8 @@ function ActiveSubscription() {
                         setValidSubscription(true);
                     }
                 }
-
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error("Error fetching data:", error);
             }
         };
 
@@ -71,31 +68,35 @@ function ActiveSubscription() {
      */
     const cancelSubscription = async () => {
         try {
-            await axios.post('${apiUrl}/cancel-subscription', {
-                userId: localStorage.getItem("userId"),
-                subscriptionId: subscriptionId, // I need a valid subscription Id.
-            }, {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+            await axios.post(
+                `${apiUrl}/cancel-subscription`,
+                {
+                    userId: localStorage.getItem("userId"),
+                    subscriptionId: subscriptionId, // I need a valid subscription Id.
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
                 }
-            });
+            );
             alert("Subscription Cancelled");
 
-            const userRole = localStorage.getItem('userRole');
-            if (userRole === 'ROLE_USER') {
+            const userRole = localStorage.getItem("userRole");
+            if (userRole === "ROLE_USER") {
                 navigate("/elderly");
-            } else if (userRole === 'ROLE_PROVIDER') {
+            } else if (userRole === "ROLE_PROVIDER") {
                 navigate("/caregiver");
             }
         } catch (error) {
-            console.log('Error fetching data: ', error);
+            console.log("Error fetching data:", error);
         }
     };
 
     return (
         <div className="active-subscription-container">
             <p className="subscription-heading">My Subscription</p>
-            { subscriptionSelected === true  ? (
+            {subscriptionSelected ? (
                 <>
                     <div className="subscription-content">
                         <p className="subscription-subheading">{type} Subscription:</p>
@@ -106,7 +107,7 @@ function ActiveSubscription() {
                     <div className="active-subscription-box">
                         <p>Current Plan - {type} (Weekly)</p>
                         <div className="subscription-edit">
-                            <NavLink className="navlink-l" exact to={"/pricing"}>
+                            <NavLink className="navlink-l" to="/pricing">
                                 <button>Change Subscription</button>
                             </NavLink>
                             <button id="subscription-cancel" onClick={cancelSubscription}>
@@ -120,24 +121,21 @@ function ActiveSubscription() {
                     <div className="subscription-content">
                         <p className="subscription-subheading">No Subscription Selected:</p>
                         <p className="subscription-text">
-                            Select a subscription plan to unlock our services and enjoy the benefits tailored to your needs. 
-                            Your selected subscription will grant you exclusive access to our features and content, enhancing your experience with our services.
+                            Select a subscription plan to unlock our services and enjoy the benefits tailored to your needs. Your selected subscription will grant you exclusive access to our features and content, enhancing your experience with our services.
                         </p>
                     </div>
                     <div className="active-subscription-box">
                         <p>No Subscription Selected</p>
                         <div className="subscription-edit">
-                            <NavLink className="navlink-l" exact to={"/pricing"}>
-                                <button style={{ width: '40vw' }}>Choose Subscription</button>
+                            <NavLink className="navlink-l" to="/pricing">
+                                <button style={{ width: "40vw" }}>Choose Subscription</button>
                             </NavLink>
                         </div>
                     </div>
                 </>
-            )};
-
-            
+            )}
         </div>
-  );
+    );
 }
 
 export default ActiveSubscription;

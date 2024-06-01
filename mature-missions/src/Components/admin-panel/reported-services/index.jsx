@@ -8,7 +8,6 @@ import "./index.css";
 import axios from "axios"; 
 import { sendNotifications } from "../../notification-sender/notification-sender.jsx"; 
 
-
 const apiUrl = process.env.REACT_APP_API_URL;
 
 class ReportedServices extends Component {
@@ -23,7 +22,7 @@ class ReportedServices extends Component {
     async componentDidMount() {
         try {
             // Make a GET request to fetch reported service data from the server
-            const response = await axios.get('${apiUrl}/admin/reported-user', {
+            const response = await axios.get(`${apiUrl}/admin/reported-user`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}` // Include authorization token in the request header
                 }
@@ -60,7 +59,7 @@ class ReportedServices extends Component {
     notifyProvider = async (status, requestId, provider) => {        
         try {
             // Make a PUT request to notify the provider and update service request status
-            await axios.put('${apiUrl}/notifications/elderly/cancel-request', {
+            await axios.put(`${apiUrl}/notifications/elderly/cancel-request`, {
                 serviceRequestId: requestId,
             }, {
                 headers: {
@@ -70,7 +69,7 @@ class ReportedServices extends Component {
 
             // Send notification to the provider based on the reported service status
             if (status === "reported") {
-                sendNotifications(provider, "Mature Missions: Reported Account", "Your accounts has been deactivated as a result of a reported service. Please contact the admin to re-activate your account.");
+                sendNotifications(provider, "Mature Missions: Reported Account", "Your account has been deactivated as a result of a reported service. Please contact the admin to re-activate your account.");
             }
 
             window.location.reload();

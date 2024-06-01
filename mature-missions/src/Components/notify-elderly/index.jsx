@@ -1,6 +1,6 @@
 /*
   File: NotifyElderly.jsx
-  Description: Ccomponent notifies elderly users, allowing them to view and manage service requests.
+  Description: Component notifies elderly users, allowing them to view and manage service requests.
 */
 
 import React, { Component } from "react";
@@ -11,7 +11,6 @@ import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import { sendNotifications } from "../notification-sender/notification-sender";
 const apiUrl = process.env.REACT_APP_API_URL;
-
 
 class NotifyElderly extends Component {
     
@@ -51,12 +50,12 @@ class NotifyElderly extends Component {
     // Handle logic if service request has been canceled by the elderly
     cancelRequest = async () => {
         try {
-            const response = await axios.put('${apiUrl}/notifications/elderly/cancel-request', {
+            const response = await axios.put(`${apiUrl}/notifications/elderly/cancel-request`, {
                 serviceRequestId: this.state.info.notification.id,
             });
 
             window.location.reload();
-            if (response.status === 200){
+            if (response.status === 200) {
                 alert("Service Request is Canceled");
             } else {
                 alert("There has been an error cancelling the request");
@@ -64,21 +63,19 @@ class NotifyElderly extends Component {
         } catch (error) {
             console.log('Error fetching data: ', error);
         } 
-        sendNotifications(this.state.info.notification.user, "Request canceled", "Request has been successfully canceled")
-       
+        sendNotifications(this.state.info.notification.user, "Request canceled", "Request has been successfully canceled");
     }
 
     // Handle logic if service request has been completed by the elderly
     serviceComplete = async () => {
         try {
-            const response = await axios.put('${apiUrl}/notifications/elderly/complete-request', {
+            const response = await axios.put(`${apiUrl}/notifications/elderly/complete-request`, {
                 serviceRequestId: this.state.info.notification.id,
                 rating: this.state.rating ? this.state.rating : 1,
                 description: this.state.reviewValue
             });
-            if (response.status === 200){
+            if (response.status === 200) {
                 alert("Service Request is Completed");
-
             } else {
                 alert("There has been an error completing the request");
             }
@@ -86,7 +83,7 @@ class NotifyElderly extends Component {
         } catch (error) {
             console.log('Error fetching data: ', error);
         } 
-        sendNotifications(this.state.info.notification.user, "Request completed", "Request has been successfully completed")
+        sendNotifications(this.state.info.notification.user, "Request completed", "Request has been successfully completed");
     }
 
     // Show the rating modal
@@ -109,13 +106,13 @@ class NotifyElderly extends Component {
     closeReport = async () => {
         this.setState({ showReport: false });
         try {
-            const response = await axios.post('${apiUrl}/notifications/elderly/report', {
+            const response = await axios.post(`${apiUrl}/notifications/elderly/report`, {
                 serviceRequestId: this.state.info.notification.id,
                 reportDescription: this.state.reportValue
             });
 
             window.location.reload();
-            if (response.status === 200){
+            if (response.status === 200) {
                 alert("Service Request has been reported");
             } else {
                 alert("There has been an error reporting the request");
@@ -123,33 +120,32 @@ class NotifyElderly extends Component {
         } catch (error) {
             console.log('Error fetching data: ', error);
         } 
-        sendNotifications(this.state.info.notification.user, "Request reported", "Request has been successfully reported")
+        sendNotifications(this.state.info.notification.user, "Request reported", "Request has been successfully reported");
     }
 
     render() {
-
         const { notification } = this.props;
         if (notification.status === "open") {
-           return(
-            <>
-                <div className='notification-details' id='open'>
-                    <img alt="" src={notification.user.imageLoc}></img>
-                    <div className='details-container'>
-                        <ul className='service-request-details'>
-                            <li className='notify-service'>Service: {notification.service.name}</li>
-                            <li className='details'>Date: {notification.requestDate}</li>
-                            <li className='details'>Time: {notification.requestTime.slice(-11,-6)} {notification.requestTime.slice(-3)}</li>
-                        </ul>
+            return (
+                <>
+                    <div className='notification-details' id='open'>
+                        <img alt="" src={notification.user.imageLoc}></img>
+                        <div className='details-container'>
+                            <ul className='service-request-details'>
+                                <li className='notify-service'>Service: {notification.service.name}</li>
+                                <li className='details'>Date: {notification.requestDate}</li>
+                                <li className='details'>Time: {notification.requestTime.slice(-11, -6)} {notification.requestTime.slice(-3)}</li>
+                            </ul>
+                        </div>
+                        <div className='notification-buttons'>
+                            <NavLink className="navlink-l">
+                                <button className='btn' id="decline-notify" onClick={this.cancelRequest}>Cancel &gt;</button>
+                            </NavLink>
+                        </div>
+                        <div className='notification-buttons'></div>
                     </div>
-                    <div className='notification-buttons'>
-                        <NavLink className="navlink-l">
-                            <button className='btn' id="decline-notify" onClick={this.cancelRequest}>Cancel &gt;</button>
-                        </NavLink>
-                    </div>
-                    <div className='notification-buttons'></div>
-                </div>
-                <div className='notifications-line'></div>
-            </>
+                    <div className='notifications-line'></div>
+                </>
             );
         }
 
@@ -164,7 +160,7 @@ class NotifyElderly extends Component {
                             <li className='details'>Caregiver: {notification.provider.user.name} </li>
                             <li className='details'>Rating: {notification.provider.rating}</li>
                             <li className='details'>Date: {notification.requestDate}</li>
-                            <li className='details'>Time: {notification.requestTime.slice(-11,-6)} {notification.requestTime.slice(-3)}</li>
+                            <li className='details'>Time: {notification.requestTime.slice(-11, -6)} {notification.requestTime.slice(-3)}</li>
                         </ul>
                     </div>
                     <div className='notification-buttons'>
@@ -247,4 +243,4 @@ class NotifyElderly extends Component {
     }
 }
 
-export default NotifyElderly
+export default NotifyElderly;

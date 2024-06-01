@@ -1,4 +1,4 @@
-/*
+/* 
     File: NotifyCaregiver.jsx
     Description: Component for notifying caregivers about service requests.
 */
@@ -31,7 +31,7 @@ class NotifyCaregiver extends Component {
     acceptRequest = async () => {
         try {
             // Get provider details
-            const providerDetails = await axios.get('${apiUrl}/getUserById', {
+            const providerDetails = await axios.get(`${apiUrl}/getUserById`, {
                 params: {
                     userId: localStorage.getItem("userId"),
                 }
@@ -39,10 +39,10 @@ class NotifyCaregiver extends Component {
             const providerId = providerDetails.data.providerId;
 
             // Send notification to backend indicating the request is accepted
-            await axios.post('${apiUrl}/notifications/caregiver/request', {
-                serviceRequestId : this.state.info.notification.id,
-                providerId : providerId,
-                accepted : true
+            await axios.post(`${apiUrl}/notifications/caregiver/request`, {
+                serviceRequestId: this.state.info.notification.id,
+                providerId: providerId,
+                accepted: true
             });
 
             window.location.reload();
@@ -60,7 +60,7 @@ class NotifyCaregiver extends Component {
     cancelRequest = async () => {
         try {
             // Get provider details
-            const providerDetails = await axios.get('${apiUrl}/getUserById', {
+            const providerDetails = await axios.get(`${apiUrl}/getUserById`, {
                 params: {
                     userId: localStorage.getItem("userId"),
                 }
@@ -68,10 +68,10 @@ class NotifyCaregiver extends Component {
             const providerId = providerDetails.data.providerId;
 
             // Send notification to backend indicating the request is canceled
-            await axios.post('${apiUrl}/notifications/caregiver/request', {
-                serviceRequestId : this.state.info.notification.id,
-                providerId : providerId,
-                accepted : false
+            await axios.post(`${apiUrl}/notifications/caregiver/request`, {
+                serviceRequestId: this.state.info.notification.id,
+                providerId: providerId,
+                accepted: false
             });
             // Reload the page after canceling the request
             window.location.reload();
