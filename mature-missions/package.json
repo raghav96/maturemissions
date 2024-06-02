@@ -1,6 +1,9 @@
 {
   "name": "mature-missions",
   "version": "0.1.0",
+  "engines": {
+    "node": "22.x"
+  },
   "private": true,
   "dependencies": {
     "@stripe/react-stripe-js": "^2.3.0",
@@ -50,5 +53,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-private-property-in-object": "^7.21.11",
+    "@babel/plugin-transform-class-properties": "^7.24.6",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.24.6",
+    "@babel/plugin-transform-numeric-separator": "^7.24.6",
+    "@babel/plugin-transform-optional-chaining": "^7.24.6",
+    "@babel/plugin-transform-private-methods": "^7.24.6"
   }
+
 }
