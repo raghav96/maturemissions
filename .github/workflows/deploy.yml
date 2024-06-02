@@ -57,4 +57,4 @@ jobs:
         heroku git:remote -a maturemissions-frontend
         git add .
         git commit -m "Deploy React app"
-        git push -f heroku main
+        git push -f heroku master
