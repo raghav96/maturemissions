@@ -49,7 +49,7 @@ jobs:
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: |
-        cd mature-missions\
+        cd mature-missions
         git init
         git remote add heroku https://git.heroku.com/maturemissions-frontend.git
         git add .
