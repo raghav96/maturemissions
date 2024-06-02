@@ -19,6 +19,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +69,7 @@ public class UserServiceImpl implements UserService{
      * @return a JSON string representing the logged-in user.
      * @throws AuthorizerException if there is an authentication error.
      */
+    @Transactional
     public String login(String username, String password) throws AuthorizerException{
         try {
             User user = getUserByUsername(username);
