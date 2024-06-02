@@ -49,9 +49,9 @@ jobs:
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: |
+        echo $HEROKU_API_KEY | heroku auth:token
         cd mature-missions
-        git init
-        git remote add heroku https://git.heroku.com/maturemissions-frontend.git
+        heroku git:remote -a maturemissions-frontend
         git add .
         git commit -m "Deploy React app"
-        git push -f heroku master
+        git push -f heroku main
