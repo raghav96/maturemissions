@@ -92,6 +92,7 @@ public class WebSecurityConfig {
         config.setAllowCredentials(true);
         config.addAllowedOrigin("http://localhost:3000"); // Allow all origins
         config.addAllowedOrigin("http://www.stripe.com");
+        config.addAllowedOrigin("https://maturemissions-frontend-abaf356370b4.herokuapp.com");
         config.addAllowedHeader("*"); // Allow all headers
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Allow specific HTTP methods
         source.registerCorsConfiguration("/**", config);
