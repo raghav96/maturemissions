@@ -1,8 +1,10 @@
-# MatureMissions - ELEC5619-Project
+# MatureMissions
 
 The idea of this project is Uber for elderly home care. We have designed a user interface we believe will be more suited to elderly users and a way for elder care givers to be able to complete tasks requested by the elderly and get paid for their services.
 
-This project was worked on by Raghav Ravisankar, Saksham Lama and Douglas Cain.
+THe project is deployed to https://maturemissions-frontend-abaf356370b4.herokuapp.com/, the backend is deployed to https://maturemissions-74447d84f53c.herokuapp.com/
+
+This project was worked on by Raghav Ravisankar, Saksham Lama and Douglas Cain for ELEC5619 class at University of Sydney.
 
 # Used Libraries:
 Front-End:
