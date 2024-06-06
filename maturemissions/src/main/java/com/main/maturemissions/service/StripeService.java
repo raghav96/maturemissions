@@ -32,6 +32,8 @@ public class StripeService {
     @Value("${stripe.keys.secret}")
     private String API_SECRET_KEY;
 
+    private String FRONTEND_URL = "https://maturemissions-frontend-abaf356370b4.herokuapp.com";
+
     public StripeService() {
 
     }
@@ -109,7 +111,7 @@ public class StripeService {
                 customer = CustomerUtil.findOrCreateCustomer(email, name);
             } catch (StripeException e) {
                 e.printStackTrace();
-                return "http://localhost:3000/pricing";
+                return FRONTEND_URL + "/pricing";
             }
 
             // Next, create a checkout session by adding the details of the checkout
@@ -118,8 +120,8 @@ public class StripeService {
                             // For subscriptions, you need to set the mode as subscription
                             .setMode(SessionCreateParams.Mode.SUBSCRIPTION)
                             .setCustomer(customer.getId())
-                            .setSuccessUrl("http://localhost:3000" + "/success?session_id={CHECKOUT_SESSION_ID}")
-                            .setCancelUrl("http://localhost:3000" + "/failure");
+                            .setSuccessUrl(FRONTEND_URL +  "/success?session_id={CHECKOUT_SESSION_ID}")
+                            .setCancelUrl(FRONTEND_URL +  "/failure");
 
             for (Product product : items) {
 
@@ -147,7 +149,7 @@ public class StripeService {
             return session.getUrl();
         } catch (Exception e) {
             e.printStackTrace();
-            return "http://localhost:3000/pricing";
+            return FRONTEND_URL + "/pricing";
         }
     }
 
@@ -194,8 +196,8 @@ public class StripeService {
             AccountLinkCreateParams accountLinkCreateParams =
                     AccountLinkCreateParams.builder()
                             .setAccount(account.getId())
-                            .setRefreshUrl("http://localhost:3000" + "/account-failure")
-                            .setReturnUrl("http://localhost:3000" + "/account-success?code={"+UUID.randomUUID().toString()+"}")
+                            .setRefreshUrl(FRONTEND_URL +  "/account-failure")
+                            .setReturnUrl(FRONTEND_URL + "/account-success?code={"+UUID.randomUUID().toString()+"}")
                             .setType(AccountLinkCreateParams.Type.ACCOUNT_ONBOARDING)
                             .build();
 
